@@ -4,16 +4,43 @@
 
 ## Table of contents
 
-### Variables
+### Enumerations
 
-- [myString](README.md#mystring)
+- [StorageType](enums/StorageType.md)
 
-## Variables
+### Interfaces
 
-### myString
+- [Options](interfaces/Options.md)
+- [Serializer](interfaces/Serializer.md)
 
-• `Const` **myString**: ``"hello world"``
+### Functions
+
+- [giveSvelteStorePersistenceBehaviour](README.md#givesveltestorepersistencebehaviour)
+
+## Functions
+
+### giveSvelteStorePersistenceBehaviour
+
+▸ **giveSvelteStorePersistenceBehaviour**\<`T`\>(`store`, `storageKey`, `options?`): `Writable`\<`T`\> & \{ `setStorageKey`: `SetStorageKey`\<`T`\>  }
+
+#### Type parameters
+
+| Name |
+| :------ |
+| `T` |
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `store` | `Writable`\<`T`\> |
+| `storageKey` | `string` |
+| `options` | [`Options`](interfaces/Options.md)\<`T`\> |
+
+#### Returns
+
+`Writable`\<`T`\> & \{ `setStorageKey`: `SetStorageKey`\<`T`\>  }
 
 #### Defined in
 
-index.ts:1
+giveSvelteStorePersistenceBehaviour.ts:30
