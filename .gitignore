@@ -4,3 +4,7 @@
 
 # Prevent local npm `pack` experiments getting committed
 *.tgz
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
