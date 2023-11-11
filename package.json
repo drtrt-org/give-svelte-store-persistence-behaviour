@@ -54,7 +54,7 @@
 		"build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
 		"docs": "typedoc",
 		"watch": "npm run build -- --watch src",
-		"install:test-harness": "npm ci --prefix ./test-harness",
+		"ci:test-harness": "npm ci --prefix ./test-harness",
 		"start:test-harness": "npm run start --prefix ./test-harness"
 	},
 	"repository": {
