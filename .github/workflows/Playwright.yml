@@ -20,7 +20,7 @@ jobs:
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps
             - name: Install Test Harness dependencies
-              run: npm install:test-harness
+              run: npm run install:test-harness
             - name: Run Playwright tests
               run: npx playwright test
             - uses: actions/upload-artifact@v3
