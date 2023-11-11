@@ -14,7 +14,7 @@ export default defineConfig({
 		command: "npm run start:test-harness",
 		url: "http://localhost:4173",
 		reuseExistingServer: !process.env.CI,
-		stdout: "ignore",
+		stdout: "pipe",
 		stderr: "pipe",
 	},
 	testDir: "./tests",
