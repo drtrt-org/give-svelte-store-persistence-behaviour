@@ -12,11 +12,13 @@ module.exports = {
 		"plugin:import/typescript",
 		"plugin:node/recommended",
 		"plugin:prettier/recommended",
+		"plugin:svelte/recommended",
 	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: {
 		ecmaVersion: 12,
 		sourceType: "module",
+		extraFileExtensions: [".svelte"],
 	},
 	rules: {
 		"node/no-missing-import": "off",
@@ -35,6 +37,13 @@ module.exports = {
 	overrides: [
 		{
 			files: ["*.ts"],
+		},
+		{
+			files: ["*.svelte"],
+			parser: "svelte-eslint-parser",
+			parserOptions: {
+				parser: "@typescript-eslint/parser",
+			},
 		},
 	],
 	settings: {
