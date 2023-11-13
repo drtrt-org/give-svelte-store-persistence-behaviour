@@ -1,13 +1,36 @@
 <script lang="ts">
-	import { writable } from "svelte/store";
+	import { writable, type Writable } from "svelte/store";
 
-	import { giveSvelteStorePersistenceBehaviour } from "../../dist/.";
+	import { giveSvelteStorePersistenceBehaviour, type Options } from "../../dist/.";
 
-	const store = giveSvelteStorePersistenceBehaviour(writable("boo"), "storeValue");
+	const storageKey = "storeValue";
+
+	let optionsText: string | undefined;
+	let store: Writable<string> | undefined;
+
+	function instantiateStore() {
+		const options = JSON.parse(optionsText ?? "{}") as Options<string>;
+
+		store = giveSvelteStorePersistenceBehaviour(writable("Boo"), storageKey, options);
+	}
+
+	function reset() {
+		optionsText = undefined;
+		store = undefined;
+		localStorage.clear();
+		sessionStorage.clear();
+	}
 </script>
 
 <main>
-	<div>
-		{$store}
-	</div>
+	<textarea
+		bind:value={optionsText}
+		placeholder="`giveSvelteStorePersistenceBehaviour` Options"
+	/>
+	<button on:click={instantiateStore}>Instantiate Store</button>
+
+	<input data-testid="input" bind:value={$store} />
+
+	<button on:click={reset}>Reset</button>
+	<p data-testid="paragraph">{$store}</p>
 </main>

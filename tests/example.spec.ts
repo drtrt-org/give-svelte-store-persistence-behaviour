@@ -1,18 +1,12 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./test-harness-fixture";
 
-test("has title", async ({ page }) => {
-	await page.goto("http://localhost:4173/");
+test("has title", async ({ testHarnessPage }) => {
+	await testHarnessPage.setOptions<string>({ persistOnFirstRun: true });
 
-	// Expect a title "to contain" a substring.
-	await expect(page).toHaveTitle("GiveSvelteStorePersistenceBehaviour Test Harness");
+	await testHarnessPage.instantiateStore();
+
+	await expect(testHarnessPage.storeBoundInput).toHaveValue("Boo");
+	await expect(testHarnessPage.storeBoundParagraph).toHaveText("Boo");
+
+	await testHarnessPage.assertLocalStorageValue("Boo");
 });
-
-// test("get started link", async ({ page }) => {
-// 	await page.goto("https://playwright.dev/");
-
-// 	// Click the get started link.
-// 	await page.getByRole("link", { name: "Get started" }).click();
-
-// 	// Expects page to have a heading with the name of Installation.
-// 	await expect(page.getByRole("heading", { name: "Installation" })).toBeVisible();
-// });

@@ -1,5 +1,9 @@
 {
 	"rules": {
 		"node/no-unpublished-import": "off"
+	},
+	"env": {
+		"browser": true,
+		"es2021": true
 	}
 }

@@ -38,7 +38,7 @@ export function giveSvelteStorePersistenceBehaviour<T>(
 
 	function getFromStorage(): T | undefined {
 		const stringified = storage.getItem(internalStorageKey);
-		return stringified === null ? undefined : (serializer.parse(stringified) as T);
+		return stringified === null ? undefined : serializer.parse(stringified);
 	}
 
 	function setToStorage(value: T) {
@@ -61,6 +61,7 @@ export function giveSvelteStorePersistenceBehaviour<T>(
 	}
 
 	function handleStorage(event: StorageEvent) {
+		console.log("yay");
 		if (event.key === internalStorageKey) {
 			otherTabStateChangedDelegate &&
 				otherTabStateChangedDelegate({
