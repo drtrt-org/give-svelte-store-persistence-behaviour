@@ -1,4 +1,5 @@
 import type { Page, Locator, Expect } from "@playwright/test";
+
 import type { Options } from "../src/Options";
 
 export class TestHarnessPage {
@@ -7,7 +8,7 @@ export class TestHarnessPage {
 
 	constructor(
 		public readonly page: Page,
-		public readonly expect: Expect<{}>,
+		public readonly expect: Expect<unknown>,
 	) {
 		this.storeBoundInput = this.page.getByTestId("input");
 		this.storeBoundParagraph = this.page.getByTestId("paragraph");
