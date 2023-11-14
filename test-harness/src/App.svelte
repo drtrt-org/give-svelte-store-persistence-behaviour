@@ -5,13 +5,18 @@
 
 	const storageKey = "storeValue";
 
+	let valueToInitialisedStoreWith: string;
 	let optionsText: string | undefined;
 	let store: Writable<string> | undefined;
 
 	function instantiateStore() {
 		const options = JSON.parse(optionsText ?? "{}") as Options<string>;
 
-		store = giveSvelteStorePersistenceBehaviour(writable("Boo"), storageKey, options);
+		store = giveSvelteStorePersistenceBehaviour(
+			writable(valueToInitialisedStoreWith),
+			storageKey,
+			options,
+		);
 	}
 
 	function reset() {
@@ -23,6 +28,8 @@
 </script>
 
 <main>
+	<input data-testid="initInput" bind:value={valueToInitialisedStoreWith} />
+
 	<textarea
 		bind:value={optionsText}
 		placeholder="`giveSvelteStorePersistenceBehaviour` Options"

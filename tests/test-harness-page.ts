@@ -22,6 +22,10 @@ export class TestHarnessPage {
 		await this.page.getByText("Reset").click();
 	}
 
+	async setInitialStoreValue(initialStoreValue: string) {
+		await this.page.getByTestId("initInput").fill(initialStoreValue);
+	}
+
 	async setOptions<T>(options: Options<T>) {
 		const optionsJSON = JSON.stringify(options, null, 2);
 

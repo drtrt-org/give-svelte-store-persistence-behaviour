@@ -1,6 +1,7 @@
 import { test, expect } from "./test-harness-fixture";
 
 test("has title", async ({ testHarnessPage }) => {
+	await testHarnessPage.setInitialStoreValue("Boo");
 	await testHarnessPage.setOptions<string>({ persistOnFirstRun: true });
 
 	await testHarnessPage.instantiateStore();
