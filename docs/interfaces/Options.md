@@ -12,7 +12,7 @@
 
 ### Properties
 
-- [otherTabStateChangedDelegate](Options.md#othertabstatechangeddelegate)
+- [storageEventDelegate](Options.md#storageEventDelegate)
 - [persistOnFirstRun](Options.md#persistonfirstrun)
 - [receiveUpdatesFromOtherTabs](Options.md#receiveupdatesfromothertabs)
 - [serializer](Options.md#serializer)
@@ -20,9 +20,9 @@
 
 ## Properties
 
-### otherTabStateChangedDelegate
+### storageEventDelegate
 
-• `Optional` **otherTabStateChangedDelegate**: ``null`` \| (`__namedParameters`: \{ `newValue`: ``null`` \| `T` ; `oldValue`: ``null`` \| `T` ; `storageKey`: `string` ; `storageType`: [`StorageType`](../enums/StorageType.md)  }) => `unknown`
+• `Optional` **storageEventDelegate**: ``null`` \| (`__namedParameters`: \{ `newValue`: ``null`` \| `T` ; `oldValue`: ``null`` \| `T` ; `storageKey`: `string` ; `storageType`: [`StorageType`](../enums/StorageType.md)  }) => `unknown`
 
 #### Defined in
 
