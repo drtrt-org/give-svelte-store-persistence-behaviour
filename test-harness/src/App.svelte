@@ -1,22 +1,22 @@
 <script lang="ts">
 	import { writable, type Writable } from "svelte/store";
 
-	import { giveSvelteStorePersistenceBehaviour, type Options } from "../../dist/.";
+	import { giveSvelteStorePersistenceBehaviour } from "../../dist/.";
 
-	const storageKey = "storeValue";
+	import { storageKey } from "./lib/constants";
+	import type { OptionsWithoutStorageKey } from "./lib/OptionsWithoutStorageKey";
 
-	let valueToInitialisedStoreWith: string;
+	let valueToInitialiseStoreWith: string;
 	let optionsText: string | undefined;
 	let store: Writable<string> | undefined;
 
 	function instantiateStore() {
-		const options = JSON.parse(optionsText ?? "{}") as Options<string>;
+		const options = JSON.parse(optionsText ?? "{}") as OptionsWithoutStorageKey<string>;
 
-		store = giveSvelteStorePersistenceBehaviour(
-			writable(valueToInitialisedStoreWith),
+		store = giveSvelteStorePersistenceBehaviour(writable(valueToInitialiseStoreWith), {
 			storageKey,
-			options,
-		);
+			...options,
+		});
 	}
 
 	function reset() {
@@ -28,7 +28,7 @@
 </script>
 
 <main>
-	<input data-testid="initInput" bind:value={valueToInitialisedStoreWith} />
+	<input data-testid="valueToInitialiseStoreWith" bind:value={valueToInitialiseStoreWith} />
 
 	<textarea
 		bind:value={optionsText}
@@ -36,8 +36,8 @@
 	/>
 	<button on:click={instantiateStore}>Instantiate Store</button>
 
-	<input data-testid="input" bind:value={$store} />
+	<input data-testid="storeBoundInput" bind:value={$store} />
 
 	<button on:click={reset}>Reset</button>
-	<p data-testid="paragraph">{$store}</p>
+	<p data-testid="storeBoundParagraph">{$store}</p>
 </main>

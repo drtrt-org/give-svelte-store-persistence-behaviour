@@ -1,6 +1,8 @@
 import type { Page, Locator, Expect } from "@playwright/test";
 
-import type { Options } from "../src/Options";
+import { StorageType } from "../dist";
+import { storageKey } from "../test-harness/src/lib/constants";
+import type { OptionsWithoutStorageKey } from "../test-harness/src/lib/OptionsWithoutStorageKey";
 
 export class TestHarnessPage {
 	public readonly storeBoundInput: Locator;
@@ -10,8 +12,8 @@ export class TestHarnessPage {
 		public readonly page: Page,
 		public readonly expect: Expect<unknown>,
 	) {
-		this.storeBoundInput = this.page.getByTestId("input");
-		this.storeBoundParagraph = this.page.getByTestId("paragraph");
+		this.storeBoundInput = this.page.getByTestId("storeBoundInput");
+		this.storeBoundParagraph = this.page.getByTestId("storeBoundParagraph");
 	}
 
 	async goto() {
@@ -22,11 +24,11 @@ export class TestHarnessPage {
 		await this.page.getByText("Reset").click();
 	}
 
-	async setInitialStoreValue(initialStoreValue: string) {
-		await this.page.getByTestId("initInput").fill(initialStoreValue);
+	async #setInitialStoreValue(initialStoreValue: string) {
+		await this.page.getByTestId("valueToInitialiseStoreWith").fill(initialStoreValue);
 	}
 
-	async setOptions<T>(options: Options<T>) {
+	async #setOptions<T>(options: OptionsWithoutStorageKey<T>) {
 		const optionsJSON = JSON.stringify(options, null, 2);
 
 		await this.page
@@ -34,25 +36,43 @@ export class TestHarnessPage {
 			.fill(optionsJSON);
 	}
 
-	async instantiateStore() {
+	async #clickInstantiateStore() {
 		await this.page.getByText("Instantiate Store").click();
 	}
 
-	async assertLocalStorageValue<T>(expected: T): Promise<void> {
-		const localStorageValueJSON = await this.page.evaluate<string | null>(() =>
-			localStorage.getItem("storeValue"),
-		);
-
-		const localStorageValue = JSON.parse(localStorageValueJSON as string) as string;
-
-		this.expect(localStorageValue).toBe(expected);
+	async instantiateStore(initialValue: string, options?: OptionsWithoutStorageKey<string>) {
+		options && (await this.#setOptions(options));
+		await this.#setInitialStoreValue(initialValue);
+		await this.#clickInstantiateStore();
 	}
 
-	async getValuePersistedToSessionStorage(): Promise<string> {
-		const sessionStorageValueJSON = await this.page.evaluate<string | null>(() =>
-			sessionStorage.getItem("storeValue"),
-		);
+	async setStoreValue(storeValue: string) {
+		await this.page.getByTestId("storeBoundInput").fill(storeValue);
+	}
 
-		return JSON.parse(sessionStorageValueJSON as string) as string;
+	async #getLocalStorageValueJSON() {
+		return await this.page.evaluate<string | null, string>(
+			(x) => localStorage.getItem(x),
+			storageKey,
+		);
+	}
+
+	async #getSessionStorageValueJSON() {
+		return await this.page.evaluate<string | null, string>(
+			(x) => sessionStorage.getItem(x),
+			storageKey,
+		);
+	}
+
+	async assertStorageValue<T>(storageType: StorageType, expected: T): Promise<void> {
+		const storageValueJSON =
+			storageType === StorageType.Local
+				? await this.#getLocalStorageValueJSON()
+				: await this.#getSessionStorageValueJSON();
+
+		const storageValue =
+			storageValueJSON === null ? undefined : (JSON.parse(storageValueJSON) as T);
+
+		this.expect(storageValue).toBe(expected);
 	}
 }
