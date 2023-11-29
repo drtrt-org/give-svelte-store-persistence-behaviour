@@ -53,7 +53,9 @@
 		"semantic-release": "semantic-release --dry-run",
 		"build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
 		"docs": "typedoc",
-		"watch": "npm run build -- --watch src"
+		"watch": "npm run build -- --watch src",
+		"ci:test-harness": "npm ci --prefix ./test-harness",
+		"start:test-harness": "npm run start --prefix ./test-harness"
 	},
 	"repository": {
 		"type": "git",
@@ -80,8 +82,10 @@
 		"eslint-plugin-import": "^2.28.0",
 		"eslint-plugin-node": "^11.1.0",
 		"eslint-plugin-prettier": "^5.0.1",
+		"eslint-plugin-svelte": "^2.35.0",
 		"husky": "^8.0.3",
 		"prettier": "^3.0.3",
+		"prettier-plugin-svelte": "^3.1.0",
 		"semantic-release": "^22.0.5",
 		"svelte": "^4.2.2",
 		"tsup": "^7.2.0",

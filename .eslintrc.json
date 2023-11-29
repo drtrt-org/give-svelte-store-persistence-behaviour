@@ -1,0 +1,66 @@
+{
+	"env": {
+		"node": true,
+		"es2021": true
+	},
+	"plugins": ["@typescript-eslint"],
+	"extends": [
+		"eslint:recommended",
+		"plugin:@typescript-eslint/recommended",
+		"plugin:@typescript-eslint/recommended-requiring-type-checking",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript",
+		"plugin:node/recommended",
+		"plugin:prettier/recommended",
+		"plugin:svelte/recommended"
+	],
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaVersion": 12,
+		"sourceType": "module",
+		"extraFileExtensions": [".svelte"],
+		"project": "./tsconfig.json"
+	},
+	"rules": {
+		"node/no-missing-import": "off",
+		"import/order": [
+			"warn",
+			{
+				"groups": ["builtin", "external", "parent", "sibling", "index"],
+				"newlines-between": "always",
+				"alphabetize": {
+					"order": "asc",
+					"caseInsensitive": true
+				}
+			}
+		],
+		"@typescript-eslint/no-floating-promises": "error"
+	},
+	"overrides": [
+		{
+			"files": ["*.ts"]
+		},
+		{
+			"files": ["*.svelte"],
+			"parser": "svelte-eslint-parser",
+			"parserOptions": {
+				"parser": "@typescript-eslint/parser"
+			}
+		},
+		{
+			"extends": ["plugin:@typescript-eslint/recommended-requiring-type-checking"],
+			"files": ["./**/*.{ts,tsx}"]
+		}
+	],
+	"settings": {
+		"import/parsers": {
+			"@typescript-eslint/parser": [".ts"]
+		},
+		"import/resolver": {
+			"typescript": {
+				"alwaysTryTypes": true
+			}
+		}
+	}
+}
