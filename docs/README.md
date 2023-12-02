@@ -21,7 +21,7 @@
 
 ### giveSvelteStorePersistenceBehaviour
 
-▸ **giveSvelteStorePersistenceBehaviour**\<`T`\>(`store`, `storageKey`, `options?`): `Writable`\<`T`\> & \{ `setStorageKey`: `SetStorageKey`\<`T`\>  }
+▸ **giveSvelteStorePersistenceBehaviour**\<`T`\>(`store`, `options`): `Writable`\<`T`\> & \{ `options?`: [`Options`](interfaces/Options.md)\<`T`\>  }
 
 #### Type parameters
 
@@ -34,13 +34,12 @@
 | Name | Type |
 | :------ | :------ |
 | `store` | `Writable`\<`T`\> |
-| `storageKey` | `string` |
 | `options` | [`Options`](interfaces/Options.md)\<`T`\> |
 
 #### Returns
 
-`Writable`\<`T`\> & \{ `setStorageKey`: `SetStorageKey`\<`T`\>  }
+`Writable`\<`T`\> & \{ `options?`: [`Options`](interfaces/Options.md)\<`T`\>  }
 
 #### Defined in
 
-[giveSvelteStorePersistenceBehaviour.ts:30](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/865030d/src/giveSvelteStorePersistenceBehaviour.ts#L30)
+[giveSvelteStorePersistenceBehaviour.ts:10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/giveSvelteStorePersistenceBehaviour.ts#L10)

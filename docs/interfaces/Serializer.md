@@ -33,7 +33,7 @@
 
 #### Defined in
 
-[Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/865030d/src/Serializer.ts#L2)
+[Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Serializer.ts#L2)
 
 ___
 
@@ -53,4 +53,4 @@ ___
 
 #### Defined in
 
-[Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/865030d/src/Serializer.ts#L3)
+[Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Serializer.ts#L3)
