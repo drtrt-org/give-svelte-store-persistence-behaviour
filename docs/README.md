@@ -11,6 +11,8 @@
 ### Interfaces
 
 - [Options](interfaces/Options.md)
+- [PersistentWritable](interfaces/PersistentWritable.md)
+- [RuntimeOptions](interfaces/RuntimeOptions.md)
 - [Serializer](interfaces/Serializer.md)
 
 ### Functions
@@ -21,7 +23,7 @@
 
 ### giveSvelteStorePersistenceBehaviour
 
-▸ **giveSvelteStorePersistenceBehaviour**\<`T`\>(`store`, `options`): `Writable`\<`T`\> & \{ `options?`: [`Options`](interfaces/Options.md)\<`T`\>  }
+▸ **giveSvelteStorePersistenceBehaviour**\<`T`\>(`store`, `options`): [`PersistentWritable`](interfaces/PersistentWritable.md)\<`T`\>
 
 #### Type parameters
 
@@ -38,8 +40,8 @@
 
 #### Returns
 
-`Writable`\<`T`\> & \{ `options?`: [`Options`](interfaces/Options.md)\<`T`\>  }
+[`PersistentWritable`](interfaces/PersistentWritable.md)\<`T`\>
 
 #### Defined in
 
-[giveSvelteStorePersistenceBehaviour.ts:10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/giveSvelteStorePersistenceBehaviour.ts#L10)
+[src/giveSvelteStorePersistenceBehaviour.ts:13](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/giveSvelteStorePersistenceBehaviour.ts#L13)

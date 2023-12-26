@@ -1,23 +1,28 @@
 import { get, type Updater, type Writable } from "svelte/store";
 
-import type { Options } from "./Options";
-import { setDefaultsForMissingOptions } from "./setDefaultsForMissingOptions";
+import { getRuntimeOptions } from "./getRuntimeOptions";
+import type { Options, RuntimeOptions } from "./Options";
 import { getStorageManager } from "./storageManagement";
-import { StorageType } from "./StorageType";
 
 const browser = typeof window !== "undefined" && typeof document !== "undefined";
+
+export interface PersistentWritable<T> extends Writable<T> {
+	runtimeOptions: RuntimeOptions<T>;
+}
 
 export const giveSvelteStorePersistenceBehaviour = <T>(
 	store: Writable<T>,
 	options: Options<T>,
-): Writable<T> & { options?: Options<T> } => {
+): PersistentWritable<T> => {
+	const runtimeOptions = getRuntimeOptions(options);
+
 	if (!browser) {
-		return store;
+		return { ...store, runtimeOptions };
 	}
 
-	setDefaultsForMissingOptions(options);
+	const persistOnFirstRun = options.persistOnFirstRun ?? true;
 
-	const { getFromStorage, setToStorage } = getStorageManager(options);
+	const { getFromStorage, setToStorage } = getStorageManager(runtimeOptions);
 
 	const initialiseState = () => {
 		const itemFromStorage = getFromStorage();
@@ -26,7 +31,7 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 			return;
 		}
 
-		if (options.persistOnFirstRun) {
+		if (persistOnFirstRun) {
 			const defaultState = get(store);
 			if (defaultState !== undefined) {
 				setToStorage(defaultState);
@@ -35,20 +40,9 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	};
 
 	const handleStorage = (event: StorageEvent) => {
-		if (event.key === options.storageKey) {
-			if (options.storageEventDelegate) {
-				options.storageEventDelegate({
-					storageKey: options.storageKey,
-					storageType: options.storageType!,
-					oldValue:
-						event.oldValue === null ? null : options.serializer!.parse(event.oldValue),
-					newValue:
-						event.newValue === null ? null : options.serializer!.parse(event.newValue),
-				});
-			}
-
-			if (options.receiveUpdatesFromOtherTabs === true && event.newValue != null) {
-				set(options.serializer!.parse(event.newValue));
+		if (event.key === runtimeOptions.storageKey) {
+			if (runtimeOptions.storageEventUpdatesStore === true && event.newValue != null) {
+				set(runtimeOptions.serializer.parse(event.newValue));
 			}
 		}
 	};
@@ -57,9 +51,7 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 
 	initialiseState();
 
-	if (options.storageType === StorageType.Local) {
-		window.addEventListener("storage", handleStorage);
-	}
+	window.addEventListener("storage", handleStorage);
 
 	return {
 		...rest,
@@ -76,6 +68,6 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 				return value;
 			});
 		},
-		options,
+		runtimeOptions,
 	};
 };

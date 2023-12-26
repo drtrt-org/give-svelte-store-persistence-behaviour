@@ -8,14 +8,19 @@
 | :------ |
 | `T` |
 
+## Hierarchy
+
+- `BaseOptions`\<`T`\>
+
+  ↳ **`Options`**
+
 ## Table of contents
 
 ### Properties
 
 - [persistOnFirstRun](Options.md#persistonfirstrun)
-- [receiveUpdatesFromOtherTabs](Options.md#receiveupdatesfromothertabs)
 - [serializer](Options.md#serializer)
-- [storageEventDelegate](Options.md#storageeventdelegate)
+- [storageEventUpdatesStore](Options.md#storageeventupdatesstore)
 - [storageKey](Options.md#storagekey)
 - [storageType](Options.md#storagetype)
 
@@ -27,17 +32,7 @@
 
 #### Defined in
 
-[Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L6)
-
-___
-
-### receiveUpdatesFromOtherTabs
-
-• `Optional` **receiveUpdatesFromOtherTabs**: `boolean`
-
-#### Defined in
-
-[Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L9)
+[src/Options.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L12)
 
 ___
 
@@ -45,43 +40,27 @@ ___
 
 • `Optional` **serializer**: [`Serializer`](Serializer.md)\<`T`\>
 
+#### Inherited from
+
+BaseOptions.serializer
+
 #### Defined in
 
-[Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L7)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L6)
 
 ___
 
-### storageEventDelegate
+### storageEventUpdatesStore
 
-• `Optional` **storageEventDelegate**: \<V\>(`__namedParameters`: \{ `newValue`: ``null`` \| `T` ; `oldValue`: ``null`` \| `T` ; `storageKey`: `string` ; `storageType`: [`StorageType`](../enums/StorageType.md)  }) => `V`
+• `Optional` **storageEventUpdatesStore**: `boolean`
 
-#### Type declaration
+#### Inherited from
 
-▸ \<`V`\>(`«destructured»`): `V`
-
-##### Type parameters
-
-| Name |
-| :------ |
-| `V` |
-
-##### Parameters
-
-| Name | Type |
-| :------ | :------ |
-| `«destructured»` | `Object` |
-| › `newValue` | ``null`` \| `T` |
-| › `oldValue` | ``null`` \| `T` |
-| › `storageKey` | `string` |
-| › `storageType` | [`StorageType`](../enums/StorageType.md) |
-
-##### Returns
-
-`V`
+BaseOptions.storageEventUpdatesStore
 
 #### Defined in
 
-[Options.ts:10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L10)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L8)
 
 ___
 
@@ -89,9 +68,13 @@ ___
 
 • **storageKey**: `string`
 
+#### Inherited from
+
+BaseOptions.storageKey
+
 #### Defined in
 
-[Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L5)
 
 ___
 
@@ -99,6 +82,10 @@ ___
 
 • `Optional` **storageType**: [`StorageType`](../enums/StorageType.md)
 
+#### Inherited from
+
+BaseOptions.storageType
+
 #### Defined in
 
-[Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/ca49d9f/src/Options.ts#L8)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L7)

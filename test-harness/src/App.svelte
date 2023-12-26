@@ -1,14 +1,18 @@
 <script lang="ts">
-	import { writable, type Writable } from "svelte/store";
+	import { writable } from "svelte/store";
 
-	import { giveSvelteStorePersistenceBehaviour } from "../../dist/.";
+	import {
+		giveSvelteStorePersistenceBehaviour,
+		StorageType,
+		type PersistentWritable,
+	} from "../../dist/.";
 
 	import { storageKey } from "./lib/constants";
 	import type { OptionsWithoutStorageKey } from "./lib/OptionsWithoutStorageKey";
 
 	let valueToInitialiseStoreWith: string;
 	let optionsText: string | undefined;
-	let store: Writable<string> | undefined;
+	let store: PersistentWritable<string> | undefined;
 
 	function instantiateStore() {
 		const options = JSON.parse(optionsText ?? "{}") as OptionsWithoutStorageKey<string>;
@@ -17,6 +21,9 @@
 			storageKey,
 			...options,
 		});
+
+		// eslint-disable-next-line @typescript-eslint/no-unused-vars
+		const { serializer, ...settableRuntimeOptions } = store.runtimeOptions;
 	}
 
 	function reset() {
@@ -28,16 +35,47 @@
 </script>
 
 <main>
-	<input data-testid="valueToInitialiseStoreWith" bind:value={valueToInitialiseStoreWith} />
+	<label
+		>Value to instantiate store with:
+		<input data-testid="valueToInitialiseStoreWith" bind:value={valueToInitialiseStoreWith} />
+	</label>
+	<label
+		>Options to instantiate store with:
+		<textarea
+			bind:value={optionsText}
+			placeholder="`giveSvelteStorePersistenceBehaviour` Options"
+		/>
+	</label>
 
-	<textarea
-		bind:value={optionsText}
-		placeholder="`giveSvelteStorePersistenceBehaviour` Options"
-	/>
 	<button on:click={instantiateStore}>Instantiate Store</button>
 
-	<input data-testid="storeBoundInput" bind:value={$store} />
+	{#if store}
+		Storage Key:
+		<input data-testid="storageKey" bind:value={store.runtimeOptions.storageKey} />
+
+		Storage Type:
+		{#each Object.values(StorageType) as storageType}
+			<label>
+				<input
+					type="radio"
+					bind:group={store.runtimeOptions.storageType}
+					value={storageType}
+				/>
+				{storageType}
+			</label>
+		{/each}
+
+		StorageEvent updates store:
+
+		<input type="checkbox" bind:checked={store.runtimeOptions.storageEventUpdatesStore} />
+	{/if}
+
+	<label
+		>Store-bound input:
+		<input data-testid="storeBoundInput" bind:value={$store} />
+	</label>
+
+	Store-bound text: <span data-testid="storeBoundParagraph">{$store}</span>
 
 	<button on:click={reset}>Reset</button>
-	<p data-testid="storeBoundParagraph">{$store}</p>
 </main>
