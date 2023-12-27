@@ -37,7 +37,7 @@ export class TestHarnessPage {
 	}
 
 	async #clickInstantiateStore() {
-		await this.page.getByText("Instantiate Store").click();
+		await this.page.getByText("Instantiate Store", { exact: true }).click();
 	}
 
 	async instantiateStore(initialValue: string, options?: OptionsWithoutStorageKey<string>) {
