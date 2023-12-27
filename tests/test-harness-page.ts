@@ -40,14 +40,20 @@ export class TestHarnessPage {
 		await this.page.getByText("Instantiate Store", { exact: true }).click();
 	}
 
-	async instantiateStore(initialValue: string, options?: OptionsWithoutStorageKey<string>) {
+	async instantiateStore(initialValue?: string, options?: OptionsWithoutStorageKey<string>) {
 		options && (await this.#setOptions(options));
-		await this.#setInitialStoreValue(initialValue);
+		initialValue && (await this.#setInitialStoreValue(initialValue));
 		await this.#clickInstantiateStore();
 	}
 
 	async setStoreValue(storeValue: string) {
 		await this.page.getByTestId("storeBoundInput").fill(storeValue);
+	}
+
+	async assertStoreValue(expected: string) {
+		const storeValue = await this.page.getByTestId("storeBoundParagraph").textContent();
+
+		this.expect(storeValue).toBe(expected);
 	}
 
 	async #getLocalStorageValueJSON() {

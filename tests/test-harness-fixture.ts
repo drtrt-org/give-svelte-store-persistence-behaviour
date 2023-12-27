@@ -4,10 +4,27 @@ import { TestHarnessPage } from "./test-harness-page";
 
 type Fixtures = {
 	testHarnessPage: TestHarnessPage;
+	testHarnessPage2: TestHarnessPage;
 };
 
 export const test = base.extend<Fixtures>({
-	testHarnessPage: async ({ page }, use) => {
+	context: async ({ browser }, use) => {
+		const context = await browser.newContext();
+		await use(context);
+		await context.close();
+	},
+	testHarnessPage: async ({ context }, use) => {
+		const page = await context.newPage();
+		const testHarnessPage = new TestHarnessPage(page, expect);
+		await testHarnessPage.goto();
+
+		await use(testHarnessPage);
+
+		await testHarnessPage.reset();
+	},
+
+	testHarnessPage2: async ({ context }, use) => {
+		const page = await context.newPage();
 		const testHarnessPage = new TestHarnessPage(page, expect);
 		await testHarnessPage.goto();
 
