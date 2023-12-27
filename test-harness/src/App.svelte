@@ -35,47 +35,61 @@
 </script>
 
 <main>
-	<label
-		>Value to instantiate store with:
-		<input data-testid="valueToInitialiseStoreWith" bind:value={valueToInitialiseStoreWith} />
-	</label>
-	<label
-		>Options to instantiate store with:
-		<textarea
-			bind:value={optionsText}
-			placeholder="`giveSvelteStorePersistenceBehaviour` Options"
-		/>
-	</label>
+	<fieldset>
+		<legend>Instantiation</legend>
+		<label
+			>Value to instantiate store with:
+			<input
+				data-testid="valueToInitialiseStoreWith"
+				bind:value={valueToInitialiseStoreWith}
+			/>
+		</label>
+		<label
+			>Options to instantiate store with:
+			<textarea
+				bind:value={optionsText}
+				placeholder="`giveSvelteStorePersistenceBehaviour` Options"
+			/>
+		</label>
 
-	<button on:click={instantiateStore}>Instantiate Store</button>
+		<button on:click={instantiateStore}>Instantiate Store</button>
+	</fieldset>
 
-	{#if store}
-		Storage Key:
-		<input data-testid="storageKey" bind:value={store.runtimeOptions.storageKey} />
+	<fieldset>
+		<legend>Runtime</legend>
 
-		Storage Type:
-		{#each Object.values(StorageType) as storageType}
-			<label>
-				<input
-					type="radio"
-					bind:group={store.runtimeOptions.storageType}
-					value={storageType}
-				/>
-				{storageType}
-			</label>
-		{/each}
+		{#if store}
+			Storage Key:
+			<input data-testid="storageKey" bind:value={store.runtimeOptions.storageKey} />
 
-		StorageEvent updates store:
+			Storage Type:
+			{#each Object.values(StorageType) as storageType}
+				<label>
+					<input
+						type="radio"
+						bind:group={store.runtimeOptions.storageType}
+						value={storageType}
+					/>
+					{storageType}
+				</label>
+			{/each}
 
-		<input type="checkbox" bind:checked={store.runtimeOptions.storageEventUpdatesStore} />
-	{/if}
+			StorageEvent updates store:
 
-	<label
-		>Store-bound input:
-		<input data-testid="storeBoundInput" bind:value={$store} />
-	</label>
+			<input type="checkbox" bind:checked={store.runtimeOptions.storageEventUpdatesStore} />
+		{/if}
+	</fieldset>
 
-	Store-bound text: <span data-testid="storeBoundParagraph">{$store}</span>
+	<fieldset>
+		<legend>Bound controls</legend>
+
+		<label
+			>Store-bound input:
+			<input data-testid="storeBoundInput" bind:value={$store} />
+		</label>
+
+		Store-bound text: <span data-testid="storeBoundParagraph">{$store}</span>
+	</fieldset>
 
 	<button on:click={reset}>Reset</button>
 </main>
