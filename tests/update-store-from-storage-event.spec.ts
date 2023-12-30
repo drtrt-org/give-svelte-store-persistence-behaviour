@@ -1,18 +1,89 @@
-import { StorageType } from "../src";
+import type { OptionsWithoutStorageKey } from "../test-harness/src/lib/OptionsWithoutStorageKey";
 
 import { test } from "./test-harness-fixture";
 
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";
 
-test.only("stuff", async ({ testHarnessPage, testHarnessPage2 }) => {
-	await testHarnessPage.instantiateStore(initialStoreValue, { storageEventUpdatesStore: true });
-	await testHarnessPage2.instantiateStore(undefined, { storageEventUpdatesStore: true });
+test.describe("Updating Store from Storage Events", () => {
+	test.describe("Store is initialised with default options and an initial value", () => {
+		test.beforeEach(async ({ testHarnessPage }) => {
+			await testHarnessPage.instantiateStore(initialStoreValue);
+		});
 
-	await testHarnessPage.assertStorageValue(StorageType.Local, initialStoreValue);
-	await testHarnessPage2.assertStorageValue(StorageType.Local, initialStoreValue);
-	await testHarnessPage2.assertStoreValue(initialStoreValue);
+		test.describe("On a new page, another Store is initialised with `storageEventUpdatesStore` set to false", () => {
+			test.beforeEach(async ({ testHarnessPage2 }) => {
+				await testHarnessPage2.instantiateStore(undefined, {
+					storageEventUpdatesStore: false,
+				});
+			});
 
-	await testHarnessPage.setStoreValue(secondStoreValue);
-	await testHarnessPage2.assertStoreValue(secondStoreValue);
+			test("The Store on the new page should have the same value as that on the first page", async ({
+				testHarnessPage2,
+			}) => {
+				await testHarnessPage2.assertStoreValue(initialStoreValue);
+			});
+
+			test.describe("On the first page, the Store's value is changed", () => {
+				test.beforeEach(async ({ testHarnessPage }) => {
+					await testHarnessPage.setStoreValue(secondStoreValue);
+				});
+
+				test("The value of the Store on the second page should not change", async ({
+					testHarnessPage2,
+				}) => {
+					await testHarnessPage2.assertStoreValue(initialStoreValue);
+				});
+			});
+		});
+	});
+
+	const scenarios: [string, OptionsWithoutStorageKey<string> | undefined][] = [
+		["default options", undefined],
+		["`storageEventUpdatesStore` set to true", { storageEventUpdatesStore: true }],
+	];
+
+	scenarios.forEach(([scenarioName, options]) => {
+		test.describe("Store is initialised with default options and an initial value", () => {
+			test.beforeEach(async ({ testHarnessPage }) => {
+				await testHarnessPage.instantiateStore(initialStoreValue);
+			});
+
+			test.describe(`On a new page, another Store is initialised with ${scenarioName}`, () => {
+				test.beforeEach(async ({ testHarnessPage2 }) => {
+					await testHarnessPage2.instantiateStore(undefined, options);
+				});
+
+				test("The Store on the new page should have the same value as that on the first page", async ({
+					testHarnessPage2,
+				}) => {
+					await testHarnessPage2.assertStoreValue(initialStoreValue);
+				});
+
+				test.describe("On the first page, the Store's value is changed", () => {
+					test.beforeEach(async ({ testHarnessPage }) => {
+						await testHarnessPage.setStoreValue(secondStoreValue);
+					});
+
+					test("The value of the Store on the second page should change to the new value, too", async ({
+						testHarnessPage2,
+					}) => {
+						await testHarnessPage2.assertStoreValue(secondStoreValue);
+					});
+
+					test.describe("On the second page, the Store's value is changed back to the original value", () => {
+						test.beforeEach(async ({ testHarnessPage2 }) => {
+							await testHarnessPage2.setStoreValue(initialStoreValue);
+						});
+
+						test("The value of the Store on the first page should change back to original value, too", async ({
+							testHarnessPage,
+						}) => {
+							await testHarnessPage.assertStoreValue(initialStoreValue);
+						});
+					});
+				});
+			});
+		});
+	});
 });
