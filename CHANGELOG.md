@@ -1,3 +1,10 @@
+## [1.0.0-beta.4](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-12-30)
+
+
+### Features
+
+* runtime options are now exposed ([8e6db3e](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/8e6db3edda72fdeac80a75fff82e1b120b262d54))
+
 ## [1.0.0-beta.3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2023-12-02)
 
 
