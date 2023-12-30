@@ -66,11 +66,10 @@ button:focus-visible {
 	outline: 4px auto -webkit-focus-ring-color;
 }
 
-main {
+label {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	gap: 1em;
 }
 
 textarea {
@@ -80,4 +79,20 @@ textarea {
 
 input {
 	width: 20em;
+}
+
+fieldset {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 1em;
+	border: 2px solid #333; /* Solid border for the box */
+	padding: 10px; /* Padding inside the box */
+	margin: 10px 0; /* Margin around the box */
+}
+
+legend {
+	padding: 0 10px; /* Padding around the label text */
+	color: #333; /* Text color for the label */
+	font-weight: bold; /* Bold font for the label */
 }

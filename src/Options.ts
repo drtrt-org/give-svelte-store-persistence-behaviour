@@ -1,21 +1,15 @@
 import type { Serializer } from "./Serializer";
 import { StorageType } from "./StorageType";
 
-export interface Options<T> {
+interface BaseOptions<T> {
 	storageKey: string;
-	persistOnFirstRun?: boolean;
 	serializer?: Serializer<T>;
 	storageType?: StorageType;
-	receiveUpdatesFromOtherTabs?: boolean;
-	storageEventDelegate?: <V>({
-		storageKey,
-		storageType,
-		oldValue,
-		newValue,
-	}: {
-		storageKey: string;
-		storageType: StorageType;
-		oldValue: T | null;
-		newValue: T | null;
-	}) => V;
+	storageEventUpdatesStore?: boolean;
 }
+
+export interface Options<T> extends BaseOptions<T> {
+	persistOnFirstRun?: boolean;
+}
+
+export interface RuntimeOptions<T> extends Required<BaseOptions<T>> {}
