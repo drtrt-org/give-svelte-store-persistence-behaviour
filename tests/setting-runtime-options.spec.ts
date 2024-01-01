@@ -1,8 +1,38 @@
+import { StorageType } from "../src";
+
 import type { OptionsWithoutStorageKey } from "./infrastructure/testHarness/src/lib/OptionsWithoutStorageKey";
 import { test } from "./infrastructure/testHarnessFixture";
 
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";
+
+test.describe("Changing StorageKey at runtime", () => {
+	test.describe("Store is initialised with default options and an initial value", () => {
+		test.beforeEach(async ({ testHarnessPage }) => {
+			await testHarnessPage.instantiateStore(initialStoreValue);
+		});
+
+		test("Value should be written to Local Storage", async ({ testHarnessPage }) => {
+			await testHarnessPage.assertStorageValue(StorageType.Local, initialStoreValue);
+		});
+
+		test.describe("RuntimeOptions StorageKey is changed", () => {
+			test.beforeEach(async ({ testHarnessPage }) => {
+				await testHarnessPage.runtimeOptions.setStorageKey("bolly");
+			});
+
+			test("Value should be written to Local Storage using the new StorageKey", async ({
+				testHarnessPage,
+			}) => {
+				await testHarnessPage.assertStorageValue(
+					StorageType.Local,
+					initialStoreValue,
+					"bolly",
+				);
+			});
+		});
+	});
+});
 
 test.describe("Updating Store from Storage Events", () => {
 	test.describe("Store is initialised with default options and an initial value", () => {

@@ -1,7 +1,7 @@
 import { StorageType } from "../src";
-import type { OptionsWithoutStorageKey } from "../test-harness/src/lib/OptionsWithoutStorageKey";
 
-import { test } from "./test-harness-fixture";
+import type { OptionsWithoutStorageKey } from "./infrastructure/testHarness/src/lib/OptionsWithoutStorageKey";
+import { test } from "./infrastructure/testHarnessFixture";
 
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";

@@ -5,7 +5,7 @@
 		giveSvelteStorePersistenceBehaviour,
 		StorageType,
 		type PersistentWritable,
-	} from "../../dist/.";
+	} from "../../../../dist/.";
 
 	import { storageKey } from "./lib/constants";
 	import type { OptionsWithoutStorageKey } from "./lib/OptionsWithoutStorageKey";
@@ -40,7 +40,7 @@
 		<label
 			>Value to instantiate store with:
 			<input
-				data-testid="valueToInitialiseStoreWith"
+				data-testid="valueToInitialiseStoreWithInput"
 				bind:value={valueToInitialiseStoreWith}
 			/>
 		</label>

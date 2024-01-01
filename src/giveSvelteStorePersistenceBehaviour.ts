@@ -1,7 +1,8 @@
-import { get, type Updater, type Writable } from "svelte/store";
+import { type Updater, type Writable } from "svelte/store";
 
-import { getRuntimeOptions } from "./getRuntimeOptions";
-import type { Options, RuntimeOptions } from "./Options";
+import { RuntimeOptions } from "./getRuntimeOptions";
+import { getSyncStoreWithBrowserStorage } from "./getSyncStoreWithBrowserStorage";
+import type { Options } from "./Options";
 import { getStorageManager } from "./storageManagement";
 
 const browser = typeof window !== "undefined" && typeof document !== "undefined";
@@ -14,30 +15,17 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	store: Writable<T>,
 	options: Options<T>,
 ): PersistentWritable<T> => {
-	const runtimeOptions = getRuntimeOptions(options);
+	const runtimeOptions = new RuntimeOptions<T>(options, store);
 
 	if (!browser) {
 		return { ...store, runtimeOptions };
 	}
 
-	const persistOnFirstRun = options.persistOnFirstRun ?? true;
+	// const persistOnFirstRun = options.persistOnFirstRun ?? true;
 
 	const { getFromStorage, setToStorage } = getStorageManager(runtimeOptions);
 
-	const initialiseState = () => {
-		const itemFromStorage = getFromStorage();
-		if (itemFromStorage !== undefined) {
-			set(itemFromStorage);
-			return;
-		}
-
-		if (persistOnFirstRun) {
-			const defaultState = get(store);
-			if (defaultState !== undefined) {
-				setToStorage(defaultState);
-			}
-		}
-	};
+	getSyncStoreWithBrowserStorage(runtimeOptions, store)();
 
 	const handleStorage = (event: StorageEvent) => {
 		if (event.key === runtimeOptions.storageKey) {
@@ -48,8 +36,6 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	};
 
 	const { update, set, ...rest } = store;
-
-	initialiseState();
 
 	window.addEventListener("storage", handleStorage);
 
