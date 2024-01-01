@@ -32,7 +32,7 @@
 
 #### Defined in
 
-[src/Options.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L12)
+[src/Options.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L12)
 
 ___
 
@@ -46,7 +46,7 @@ BaseOptions.serializer
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L6)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L6)
 
 ___
 
@@ -60,7 +60,7 @@ BaseOptions.storageEventUpdatesStore
 
 #### Defined in
 
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L8)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L8)
 
 ___
 
@@ -74,7 +74,7 @@ BaseOptions.storageKey
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L5)
 
 ___
 
@@ -88,4 +88,4 @@ BaseOptions.storageType
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4fda060/src/Options.ts#L7)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L7)
