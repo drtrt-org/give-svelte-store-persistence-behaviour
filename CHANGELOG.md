@@ -1,3 +1,11 @@
+## [1.0.0-beta.5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-01-02)
+
+
+### Bug Fixes
+
+* sync store and browser storage on runtime options change ([f0dc0b5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/f0dc0b5e39c45f1982155ed4e6f6d13b72570a17))
+* value can now be persisted as soon as runtime options change ([53ecd03](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/53ecd0381f1b49a72d7936d5dbcf4ef573f6e5c9))
+
 ## [1.0.0-beta.4](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2023-12-30)
 
 
