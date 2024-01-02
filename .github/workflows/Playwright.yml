@@ -24,7 +24,7 @@ jobs:
               run: npm run build
 
             - name: Install Test Harness dependencies
-              run: npm run ci:test-harness
+              run: npm run test-harness:ci
 
             - name: Install Playwright Browsers
               run: npx playwright install --with-deps

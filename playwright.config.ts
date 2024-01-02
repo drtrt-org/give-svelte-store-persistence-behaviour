@@ -11,7 +11,7 @@ import { defineConfig, devices } from "@playwright/test";
  */
 export default defineConfig({
 	webServer: {
-		command: "npm run start:test-harness",
+		command: "npm run test-harness:start",
 		url: "http://localhost:4173",
 		reuseExistingServer: !process.env.CI,
 		stdout: "pipe",

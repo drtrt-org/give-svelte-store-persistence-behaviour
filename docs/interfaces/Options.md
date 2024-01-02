@@ -8,17 +8,11 @@
 | :------ |
 | `T` |
 
-## Hierarchy
-
-- `BaseOptions`\<`T`\>
-
-  ↳ **`Options`**
-
 ## Table of contents
 
 ### Properties
 
-- [persistOnFirstRun](Options.md#persistonfirstrun)
+- [persistLazily](Options.md#persistlazily)
 - [serializer](Options.md#serializer)
 - [storageEventUpdatesStore](Options.md#storageeventupdatesstore)
 - [storageKey](Options.md#storagekey)
@@ -26,13 +20,13 @@
 
 ## Properties
 
-### persistOnFirstRun
+### persistLazily
 
-• `Optional` **persistOnFirstRun**: `boolean`
+• `Optional` **persistLazily**: `boolean`
 
 #### Defined in
 
-[src/Options.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L12)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L9)
 
 ___
 
@@ -40,13 +34,9 @@ ___
 
 • `Optional` **serializer**: [`Serializer`](Serializer.md)\<`T`\>
 
-#### Inherited from
-
-BaseOptions.serializer
-
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L6)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L6)
 
 ___
 
@@ -54,13 +44,9 @@ ___
 
 • `Optional` **storageEventUpdatesStore**: `boolean`
 
-#### Inherited from
-
-BaseOptions.storageEventUpdatesStore
-
 #### Defined in
 
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L8)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L8)
 
 ___
 
@@ -68,13 +54,9 @@ ___
 
 • **storageKey**: `string`
 
-#### Inherited from
-
-BaseOptions.storageKey
-
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L5)
 
 ___
 
@@ -82,10 +64,6 @@ ___
 
 • `Optional` **storageType**: [`StorageType`](../enums/StorageType.md)
 
-#### Inherited from
-
-BaseOptions.storageType
-
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L7)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L7)

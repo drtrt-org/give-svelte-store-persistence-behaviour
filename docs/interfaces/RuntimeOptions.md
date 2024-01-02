@@ -10,7 +10,7 @@
 
 ## Hierarchy
 
-- `Required`\<`BaseOptions`\<`T`\>\>
+- `Required`\<[`Options`](Options.md)\<`T`\>\>
 
   ↳ **`RuntimeOptions`**
 
@@ -18,12 +18,27 @@
 
 ### Properties
 
+- [persistLazily](RuntimeOptions.md#persistlazily)
 - [serializer](RuntimeOptions.md#serializer)
 - [storageEventUpdatesStore](RuntimeOptions.md#storageeventupdatesstore)
 - [storageKey](RuntimeOptions.md#storagekey)
 - [storageType](RuntimeOptions.md#storagetype)
 
 ## Properties
+
+### persistLazily
+
+• **persistLazily**: `boolean`
+
+#### Inherited from
+
+Required.persistLazily
+
+#### Defined in
+
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L9)
+
+___
 
 ### serializer
 
@@ -35,7 +50,7 @@ Required.serializer
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L6)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L6)
 
 ___
 
@@ -49,7 +64,7 @@ Required.storageEventUpdatesStore
 
 #### Defined in
 
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L8)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L8)
 
 ___
 
@@ -63,7 +78,7 @@ Required.storageKey
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L5)
 
 ___
 
@@ -77,4 +92,4 @@ Required.storageType
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/Options.ts#L7)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/Options.ts#L7)

@@ -1,12 +1,14 @@
 import { get, type Writable } from "svelte/store";
-import type { IRuntimeOptions } from "./Options";
-import { getStorageManager } from "./storageManagement";
+
+import type { RuntimeOptions } from "./Options";
+import type { StorageManager } from "./storageManagement";
 
 export const getSyncStoreWithBrowserStorage = <T>(
-	runtimeOptions: IRuntimeOptions<T>,
+	runtimeOptions: RuntimeOptions<T>,
 	store: Writable<T>,
+	storageManager: StorageManager<T>,
 ) => {
-	const { getFromStorage, setToStorage } = getStorageManager<T>(runtimeOptions);
+	const { getFromStorage, setToStorage } = storageManager;
 	const defaultStoreValue = get(store);
 
 	return () => {
@@ -17,7 +19,7 @@ export const getSyncStoreWithBrowserStorage = <T>(
 			return;
 		}
 
-		if (runtimeOptions.persistOnFirstRun && defaultStoreValue !== undefined) {
+		if (!runtimeOptions.persistLazily && defaultStoreValue !== undefined) {
 			setToStorage(defaultStoreValue);
 		}
 	};

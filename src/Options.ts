@@ -6,7 +6,7 @@ export interface Options<T> {
 	serializer?: Serializer<T>;
 	storageType?: StorageType;
 	storageEventUpdatesStore?: boolean;
-	persistOnFirstRun?: boolean;
+	persistLazily?: boolean;
 }
 
-export interface IRuntimeOptions<T> extends Required<Options<T>> {}
+export interface RuntimeOptions<T> extends Required<Options<T>> {}
