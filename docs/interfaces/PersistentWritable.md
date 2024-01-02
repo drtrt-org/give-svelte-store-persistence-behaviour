@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b2607f9/src/giveSvelteStorePersistenceBehaviour.ts#L10)
+[src/giveSvelteStorePersistenceBehaviour.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1715988/src/giveSvelteStorePersistenceBehaviour.ts#L12)
 
 ## Methods
 
@@ -84,7 +84,7 @@ Writable.set
 
 #### Defined in
 
-test-harness/node_modules/svelte/types/index.d.ts:1628
+tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1628
 
 ___
 
@@ -136,7 +136,7 @@ Writable.subscribe
 
 #### Defined in
 
-test-harness/node_modules/svelte/types/index.d.ts:1619
+tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1619
 
 ___
 
@@ -186,4 +186,4 @@ Writable.update
 
 #### Defined in
 
-test-harness/node_modules/svelte/types/index.d.ts:1634
+tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1634

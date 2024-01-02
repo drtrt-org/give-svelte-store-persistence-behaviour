@@ -1,8 +1,10 @@
-import { get, type Updater, type Writable } from "svelte/store";
+import { type Updater, type Writable } from "svelte/store";
 
-import { getRuntimeOptions } from "./getRuntimeOptions";
-import type { Options, RuntimeOptions } from "./Options";
+import { addDefaultsForMissingOptions } from "./addDefaultsForMissingOptions";
+import { getSyncStoreWithBrowserStorage } from "./getSyncStoreWithBrowserStorage";
+import type { RuntimeOptions, Options } from "./Options";
 import { getStorageManager } from "./storageManagement";
+import { SynchronisingRuntimeOptions } from "./SynchronisingRuntimeOptions";
 
 const browser = typeof window !== "undefined" && typeof document !== "undefined";
 
@@ -14,30 +16,21 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	store: Writable<T>,
 	options: Options<T>,
 ): PersistentWritable<T> => {
-	const runtimeOptions = getRuntimeOptions(options);
+	const optionsWithDefaults = addDefaultsForMissingOptions(options);
+
+	const storageManager = getStorageManager(optionsWithDefaults);
+
+	const runtimeOptions = new SynchronisingRuntimeOptions<T>(
+		optionsWithDefaults,
+		store,
+		storageManager,
+	);
 
 	if (!browser) {
 		return { ...store, runtimeOptions };
 	}
 
-	const persistOnFirstRun = options.persistOnFirstRun ?? true;
-
-	const { getFromStorage, setToStorage } = getStorageManager(runtimeOptions);
-
-	const initialiseState = () => {
-		const itemFromStorage = getFromStorage();
-		if (itemFromStorage !== undefined) {
-			set(itemFromStorage);
-			return;
-		}
-
-		if (persistOnFirstRun) {
-			const defaultState = get(store);
-			if (defaultState !== undefined) {
-				setToStorage(defaultState);
-			}
-		}
-	};
+	getSyncStoreWithBrowserStorage(runtimeOptions, store, storageManager)();
 
 	const handleStorage = (event: StorageEvent) => {
 		if (event.key === runtimeOptions.storageKey) {
@@ -49,21 +42,19 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 
 	const { update, set, ...rest } = store;
 
-	initialiseState();
-
 	window.addEventListener("storage", handleStorage);
 
 	return {
 		...rest,
 		set(value: T) {
-			setToStorage(value);
+			storageManager.setToStorage(value);
 			set(value);
 		},
 		update(updater: Updater<T>) {
 			return update((last) => {
 				const value = updater(last);
 
-				setToStorage(value);
+				storageManager.setToStorage(value);
 
 				return value;
 			});

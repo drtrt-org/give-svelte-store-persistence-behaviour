@@ -1,7 +1,7 @@
 import { StorageType } from "../src";
-import type { OptionsWithoutStorageKey } from "../test-harness/src/lib/OptionsWithoutStorageKey";
 
-import { test } from "./test-harness-fixture";
+import type { OptionsWithoutStorageKey } from "./infrastructure/testHarness/src/lib/OptionsWithoutStorageKey";
+import { test } from "./infrastructure/testHarnessFixture";
 
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";
@@ -93,11 +93,11 @@ test.describe("Store is initialised with StorageType of 'Session'", () => {
 	});
 });
 
-test.describe("Store is initialised with PersistOnFirstRun value of 'true'", () => {
+test.describe("Store is initialised with PersistLazily value of 'false'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.persistOnFirstRun = true;
+		options.persistLazily = false;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -117,11 +117,11 @@ test.describe("Store is initialised with PersistOnFirstRun value of 'true'", () 
 	});
 });
 
-test.describe("Store is initialised with PersistOnFirstRun value of 'false'", () => {
+test.describe("Store is initialised with PersistLazily value of 'true'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.persistOnFirstRun = false;
+		options.persistLazily = true;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -141,12 +141,12 @@ test.describe("Store is initialised with PersistOnFirstRun value of 'false'", ()
 	});
 });
 
-test.describe("Store is initialised with StorageType of 'Session' and PersistOnFirstRun value of 'false'", () => {
+test.describe("Store is initialised with StorageType of 'Session' and PersistLazily value of 'true'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
 		options.storageType = StorageType.Session;
-		options.persistOnFirstRun = false;
+		options.persistLazily = true;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {

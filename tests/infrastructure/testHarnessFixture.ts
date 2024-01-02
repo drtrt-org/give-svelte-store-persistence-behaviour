@@ -1,6 +1,6 @@
 import { test as base, expect } from "@playwright/test";
 
-import { TestHarnessPage } from "./test-harness-page";
+import { TestHarnessPage } from "./pageObjects/testHarnessPage";
 
 type Fixtures = {
 	testHarnessPage: TestHarnessPage;
