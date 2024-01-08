@@ -1,10 +1,11 @@
 import { StorageType } from "../src";
 
-import type { OptionsWithoutStorageKey } from "./infrastructure/testHarness/src/lib/OptionsWithoutStorageKey";
+import { storageKey as initialStorageKey } from "./infrastructure/testHarness/src/lib/constants";
 import { test } from "./infrastructure/testHarnessFixture";
 
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";
+const secondStorageKey = "secondStorageKey";
 
 test.describe("Changing StorageKey at runtime", () => {
 	test.describe("Store is initialised with default options and an initial value", () => {
@@ -16,99 +17,108 @@ test.describe("Changing StorageKey at runtime", () => {
 			await testHarnessPage.assertStorageValue(StorageType.Local, initialStoreValue);
 		});
 
+		test("The value should be reflected in a bound span", async ({ testHarnessPage }) => {
+			await testHarnessPage.assertStoreBoundSpanText(initialStoreValue);
+		});
+
 		test.describe("RuntimeOptions StorageKey is changed", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
-				await testHarnessPage.runtimeOptions.setStorageKey("bolly");
+				await testHarnessPage.runtimeOptions.setStorageKey(secondStorageKey);
 			});
 
-			test("Value should be written to Local Storage using the new StorageKey", async ({
+			test("The same value should be written to Local Storage using the new StorageKey", async ({
 				testHarnessPage,
 			}) => {
 				await testHarnessPage.assertStorageValue(
 					StorageType.Local,
 					initialStoreValue,
-					"bolly",
+					secondStorageKey,
 				);
 			});
 		});
 	});
-});
 
-test.describe("Updating Store from Storage Events", () => {
 	test.describe("Store is initialised with default options and an initial value", () => {
 		test.beforeEach(async ({ testHarnessPage }) => {
 			await testHarnessPage.instantiateStore(initialStoreValue);
 		});
 
-		test.describe("On a new page, another Store is initialised with `storageEventUpdatesStore` set to false", () => {
-			test.beforeEach(async ({ testHarnessPage2 }) => {
-				await testHarnessPage2.instantiateStore(undefined, {
-					storageEventUpdatesStore: false,
-				});
+		test.describe("Store value is changed to a second value", () => {
+			test.beforeEach(async ({ testHarnessPage }) => {
+				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			test("The Store on the new page should have the same value as that on the first page", async ({
-				testHarnessPage2,
+			test("The change to the second value should be reflected in a bound span", async ({
+				testHarnessPage,
 			}) => {
-				await testHarnessPage2.assertStoreValue(initialStoreValue);
+				await testHarnessPage.assertStoreBoundSpanText(secondStoreValue);
 			});
 
-			test.describe("On the first page, the Store's value is changed", () => {
+			test.describe("RuntimeOptions StorageKey is changed", () => {
 				test.beforeEach(async ({ testHarnessPage }) => {
-					await testHarnessPage.setStoreValue(secondStoreValue);
+					await testHarnessPage.runtimeOptions.setStorageKey(secondStorageKey);
 				});
 
-				test("The value of the Store on the second page should not change", async ({
-					testHarnessPage2,
+				test("The initial value should be written to Local Storage using the new StorageKey", async ({
+					testHarnessPage,
 				}) => {
-					await testHarnessPage2.assertStoreValue(initialStoreValue);
+					await testHarnessPage.assertStorageValue(
+						StorageType.Local,
+						initialStoreValue,
+						secondStorageKey,
+					);
+				});
+
+				test("The change back to the initial value should be reflected in a bound span", async ({
+					testHarnessPage,
+				}) => {
+					await testHarnessPage.assertStoreBoundSpanText(initialStoreValue);
 				});
 			});
 		});
 	});
 
-	const scenarios: [string, OptionsWithoutStorageKey<string> | undefined][] = [
-		["default options", undefined],
-		["`storageEventUpdatesStore` set to true", { storageEventUpdatesStore: true }],
-	];
+	test.describe("Store is initialised with default options and an initial value", () => {
+		test.beforeEach(async ({ testHarnessPage }) => {
+			await testHarnessPage.instantiateStore(initialStoreValue);
+		});
 
-	scenarios.forEach(([scenarioName, options]) => {
-		test.describe("Store is initialised with default options and an initial value", () => {
+		test.describe("RuntimeOptions StorageKey is changed", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
-				await testHarnessPage.instantiateStore(initialStoreValue);
+				await testHarnessPage.runtimeOptions.setStorageKey(secondStorageKey);
 			});
 
-			test.describe(`On a new page, another Store is initialised with ${scenarioName}`, () => {
-				test.beforeEach(async ({ testHarnessPage2 }) => {
-					await testHarnessPage2.instantiateStore(undefined, options);
+			test.describe("Store value is changed to a second value", () => {
+				test.beforeEach(async ({ testHarnessPage }) => {
+					await testHarnessPage.setStoreValue(secondStoreValue);
 				});
 
-				test("The Store on the new page should have the same value as that on the first page", async ({
-					testHarnessPage2,
+				test("The change to the second value should be reflected in a bound span", async ({
+					testHarnessPage,
 				}) => {
-					await testHarnessPage2.assertStoreValue(initialStoreValue);
+					await testHarnessPage.assertStoreBoundSpanText(secondStoreValue);
 				});
 
-				test.describe("On the first page, the Store's value is changed", () => {
+				test.describe("RuntimeOptions StorageKey is changed back to the original key", () => {
 					test.beforeEach(async ({ testHarnessPage }) => {
-						await testHarnessPage.setStoreValue(secondStoreValue);
+						await testHarnessPage.runtimeOptions.setStorageKey(initialStorageKey);
 					});
 
-					test("The value of the Store on the second page should change to the new value, too", async ({
-						testHarnessPage2,
+					test("The bound span should change back to the first value", async ({
+						testHarnessPage,
 					}) => {
-						await testHarnessPage2.assertStoreValue(secondStoreValue);
+						await testHarnessPage.assertStoreBoundSpanText(initialStoreValue);
 					});
 
-					test.describe("On the second page, the Store's value is changed back to the original value", () => {
-						test.beforeEach(async ({ testHarnessPage2 }) => {
-							await testHarnessPage2.setStoreValue(initialStoreValue);
+					test.describe("RuntimeOptions StorageKey is changed back to the second key again", () => {
+						test.beforeEach(async ({ testHarnessPage }) => {
+							await testHarnessPage.runtimeOptions.setStorageKey(secondStorageKey);
 						});
 
-						test("The value of the Store on the first page should change back to original value, too", async ({
+						test("The bound span should change to to the second value again", async ({
 							testHarnessPage,
 						}) => {
-							await testHarnessPage.assertStoreValue(initialStoreValue);
+							await testHarnessPage.assertStoreBoundSpanText(secondStoreValue);
 						});
 					});
 				});

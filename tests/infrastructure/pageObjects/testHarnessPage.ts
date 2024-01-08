@@ -8,7 +8,7 @@ import { RuntimeOptions } from "./runtimeOptions";
 
 export class TestHarnessPage {
 	readonly storeBoundInput: Locator;
-	readonly storeBoundParagraph: Locator;
+	readonly storeBoundSpan: Locator;
 	readonly optionsTextArea: Locator;
 	readonly instantiateStoreButton: Locator;
 	readonly valueToInitialiseStoreWithInput: Locator;
@@ -20,7 +20,7 @@ export class TestHarnessPage {
 		readonly expect: Expect<unknown>,
 	) {
 		this.storeBoundInput = this.page.getByTestId("storeBoundInput");
-		this.storeBoundParagraph = this.page.getByTestId("storeBoundParagraph");
+		this.storeBoundSpan = this.page.getByTestId("storeBoundSpan");
 
 		this.valueToInitialiseStoreWithInput = this.page.getByTestId(
 			"valueToInitialiseStoreWithInput",
@@ -58,8 +58,9 @@ export class TestHarnessPage {
 	}
 
 	async instantiateStore(initialValue?: string, options?: OptionsWithoutStorageKey<string>) {
-		options && (await this.#setOptions(options));
-		initialValue && (await this.#setInitialStoreValue(initialValue));
+		options !== undefined && (await this.#setOptions(options));
+		initialValue !== undefined && (await this.#setInitialStoreValue(initialValue));
+
 		await this.#clickInstantiateStore();
 	}
 
@@ -67,8 +68,8 @@ export class TestHarnessPage {
 		await this.storeBoundInput.fill(storeValue);
 	}
 
-	async assertStoreValue(expected: string) {
-		const storeValue = await this.storeBoundParagraph.textContent();
+	async assertStoreBoundSpanText(expected: string) {
+		const storeValue = await this.storeBoundSpan.textContent();
 
 		this.expect(storeValue).toBe(expected);
 	}

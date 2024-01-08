@@ -11,11 +11,27 @@
 	import type { OptionsWithoutStorageKey } from "./lib/OptionsWithoutStorageKey";
 
 	let valueToInitialiseStoreWith: string;
+	let valueToInitialiseStoreWithInput: HTMLInputElement;
+
+	// We need to do the following because Svelte will not update a bound
+	// variable if:
+	// a) it's initial value is undefined, and
+	// b) the bound input is set to an empty string.
+	$: if (
+		valueToInitialiseStoreWithInput &&
+		valueToInitialiseStoreWithInput.value === "" &&
+		valueToInitialiseStoreWith !== ""
+	) {
+		valueToInitialiseStoreWith = "";
+	}
+
 	let optionsText: string | undefined;
 	let store: PersistentWritable<string> | undefined;
 
 	function instantiateStore() {
 		const options = JSON.parse(optionsText ?? "{}") as OptionsWithoutStorageKey<string>;
+
+		console.log("GEEBLE", valueToInitialiseStoreWith);
 
 		store = giveSvelteStorePersistenceBehaviour(writable(valueToInitialiseStoreWith), {
 			storageKey,
@@ -41,6 +57,7 @@
 			>Value to instantiate store with:
 			<input
 				data-testid="valueToInitialiseStoreWithInput"
+				bind:this={valueToInitialiseStoreWithInput}
 				bind:value={valueToInitialiseStoreWith}
 			/>
 		</label>
@@ -88,7 +105,7 @@
 			<input data-testid="storeBoundInput" bind:value={$store} />
 		</label>
 
-		Store-bound text: <span data-testid="storeBoundParagraph">{$store}</span>
+		Store-bound text: <span data-testid="storeBoundSpan">{$store}</span>
 	</fieldset>
 
 	<button on:click={reset}>Reset</button>
