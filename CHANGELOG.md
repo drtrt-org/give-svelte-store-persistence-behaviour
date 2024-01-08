@@ -1,3 +1,10 @@
+## [1.0.0-beta.6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-01-08)
+
+
+### Bug Fixes
+
+* store now updates with default on new storage key ([5be7881](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/5be788117a03fe80b4726464d9860b6d327a940d))
+
 ## [1.0.0-beta.5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-01-02)
 
 
