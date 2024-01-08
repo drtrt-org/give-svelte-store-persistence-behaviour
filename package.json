@@ -56,7 +56,8 @@
 		"watch": "npm run build -- --watch src",
 		"test-harness:ci": "npm ci --prefix ./tests/infrastructure/testHarness",
 		"test-harness:start": "npm run start --prefix ./tests/infrastructure/testHarness",
-		"acc-test:start": "npx playwright test"
+		"test-harness:dev": "npm run dev --prefix ./tests/infrastructure/testHarness",
+		"playwright": "npx playwright test"
 	},
 	"repository": {
 		"type": "git",

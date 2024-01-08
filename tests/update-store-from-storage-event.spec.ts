@@ -20,7 +20,7 @@ test.describe("Updating Store from Storage Events", () => {
 			test("The Store on the new page should have the same value as that on the first page", async ({
 				testHarnessPage2,
 			}) => {
-				await testHarnessPage2.assertStoreValue(initialStoreValue);
+				await testHarnessPage2.assertStoreBoundSpanText(initialStoreValue);
 			});
 
 			test.describe("On the first page, the Store's value is changed", () => {
@@ -31,7 +31,7 @@ test.describe("Updating Store from Storage Events", () => {
 				test("The value of the Store on the second page should not change", async ({
 					testHarnessPage2,
 				}) => {
-					await testHarnessPage2.assertStoreValue(initialStoreValue);
+					await testHarnessPage2.assertStoreBoundSpanText(initialStoreValue);
 				});
 			});
 		});
@@ -56,7 +56,7 @@ test.describe("Updating Store from Storage Events", () => {
 				test("The Store on the new page should have the same value as that on the first page", async ({
 					testHarnessPage2,
 				}) => {
-					await testHarnessPage2.assertStoreValue(initialStoreValue);
+					await testHarnessPage2.assertStoreBoundSpanText(initialStoreValue);
 				});
 
 				test.describe("On the first page, the Store's value is changed", () => {
@@ -67,7 +67,7 @@ test.describe("Updating Store from Storage Events", () => {
 					test("The value of the Store on the second page should change to the new value, too", async ({
 						testHarnessPage2,
 					}) => {
-						await testHarnessPage2.assertStoreValue(secondStoreValue);
+						await testHarnessPage2.assertStoreBoundSpanText(secondStoreValue);
 					});
 
 					test.describe("On the second page, the Store's value is changed back to the original value", () => {
@@ -78,7 +78,7 @@ test.describe("Updating Store from Storage Events", () => {
 						test("The value of the Store on the first page should change back to original value, too", async ({
 							testHarnessPage,
 						}) => {
-							await testHarnessPage.assertStoreValue(initialStoreValue);
+							await testHarnessPage.assertStoreBoundSpanText(initialStoreValue);
 						});
 					});
 				});

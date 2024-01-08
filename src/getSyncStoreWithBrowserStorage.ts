@@ -14,13 +14,14 @@ export const getSyncStoreWithBrowserStorage = <T>(
 	return () => {
 		const fromStorage = getFromStorage();
 
-		if (fromStorage != undefined) {
+		if (fromStorage !== undefined) {
 			store.set(fromStorage);
 			return;
 		}
 
 		if (!runtimeOptions.persistLazily && defaultStoreValue !== undefined) {
 			setToStorage(defaultStoreValue);
+			store.set(defaultStoreValue);
 		}
 	};
 };
