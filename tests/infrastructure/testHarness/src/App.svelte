@@ -31,8 +31,6 @@
 	function instantiateStore() {
 		const options = JSON.parse(optionsText ?? "{}") as OptionsWithoutStorageKey<string>;
 
-		console.log("GEEBLE", valueToInitialiseStoreWith);
-
 		store = giveSvelteStorePersistenceBehaviour(writable(valueToInitialiseStoreWith), {
 			storageKey,
 			...options,

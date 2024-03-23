@@ -6,6 +6,7 @@ const defaultOptions = {
 	storageType: StorageType.Local,
 	storageEventUpdatesStore: true,
 	persistLazily: false,
+	resetToDefaultOnParsingError: true,
 };
 
 export const addDefaultsForMissingOptions = <T>(options: Options<T>): RuntimeOptions<T> => ({
