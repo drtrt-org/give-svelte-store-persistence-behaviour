@@ -35,26 +35,11 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	const handleStorage = (event: StorageEvent) => {
 		if (event.key === runtimeOptions.storageKey) {
 			if (event.newValue != null) {
-				// let valueToSet;
-
-				//	try {
 				const valueToSet = runtimeOptions.serializer.parse(event.newValue);
 
 				if (runtimeOptions.storageEventUpdatesStore === true) {
 					set(valueToSet);
 				}
-				//} catch (error) {
-				// if (runtimeOptions.resetToDefaultOnParsingError) {
-				// 	if (event.oldValue !== null) {
-				// 		storageManager.setRawToStorage(event.oldValue);
-				// 	} else {
-				// 		storageManager.removeFromStorage();
-				// 	}
-				// }
-				//console.log("Error!");
-
-				//	throw error;
-				//	}
 			}
 		}
 	};
