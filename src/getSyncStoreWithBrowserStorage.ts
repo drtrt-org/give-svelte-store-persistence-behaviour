@@ -11,8 +11,23 @@ export const getSyncStoreWithBrowserStorage = <T>(
 	const { getFromStorage, setToStorage } = storageManager;
 	const defaultStoreValue = get(store);
 
+	const resetToDefault = () => {
+		setToStorage(defaultStoreValue);
+		store.set(defaultStoreValue);
+	};
+
 	return () => {
-		const fromStorage = getFromStorage();
+		let fromStorage;
+
+		try {
+			fromStorage = getFromStorage();
+		} catch (error) {
+			if (runtimeOptions.resetToDefaultOnParsingError) {
+				resetToDefault();
+			}
+
+			throw error;
+		}
 
 		if (fromStorage !== undefined) {
 			store.set(fromStorage);
@@ -20,8 +35,7 @@ export const getSyncStoreWithBrowserStorage = <T>(
 		}
 
 		if (!runtimeOptions.persistLazily && defaultStoreValue !== undefined) {
-			setToStorage(defaultStoreValue);
-			store.set(defaultStoreValue);
+			resetToDefault();
 		}
 	};
 };

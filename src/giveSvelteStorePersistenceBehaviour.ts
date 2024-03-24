@@ -34,8 +34,12 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 
 	const handleStorage = (event: StorageEvent) => {
 		if (event.key === runtimeOptions.storageKey) {
-			if (runtimeOptions.storageEventUpdatesStore === true && event.newValue != null) {
-				set(runtimeOptions.serializer.parse(event.newValue));
+			if (event.newValue != null) {
+				const valueToSet = runtimeOptions.serializer.parse(event.newValue);
+
+				if (runtimeOptions.storageEventUpdatesStore === true) {
+					set(valueToSet);
+				}
 			}
 		}
 	};

@@ -65,4 +65,12 @@ export class SynchronisingRuntimeOptions<T> implements RuntimeOptions<T> {
 	set persistLazily(value) {
 		this.runtimeOptions.persistLazily = value;
 	}
+
+	get resetToDefaultOnParsingError() {
+		return this.runtimeOptions.resetToDefaultOnParsingError;
+	}
+
+	set resetToDefaultOnParsingError(value) {
+		this.runtimeOptions.resetToDefaultOnParsingError = value;
+	}
 }
