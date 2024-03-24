@@ -33,19 +33,19 @@
 
 #### Defined in
 
-[src/Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Serializer.ts#L2)
+[src/Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Serializer.ts#L2)
 
 ___
 
 ### stringify
 
-▸ **stringify**(`object`): `string`
+▸ **stringify**(`value`): `string`
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `object` | `T` |
+| `value` | `T` |
 
 #### Returns
 
@@ -53,4 +53,4 @@ ___
 
 #### Defined in
 
-[src/Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Serializer.ts#L3)
+[src/Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Serializer.ts#L3)

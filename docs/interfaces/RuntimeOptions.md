@@ -19,6 +19,7 @@
 ### Properties
 
 - [persistLazily](RuntimeOptions.md#persistlazily)
+- [resetToDefaultOnParsingError](RuntimeOptions.md#resettodefaultonparsingerror)
 - [serializer](RuntimeOptions.md#serializer)
 - [storageEventUpdatesStore](RuntimeOptions.md#storageeventupdatesstore)
 - [storageKey](RuntimeOptions.md#storagekey)
@@ -36,7 +37,21 @@ Required.persistLazily
 
 #### Defined in
 
-[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Options.ts#L9)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L9)
+
+___
+
+### resetToDefaultOnParsingError
+
+• **resetToDefaultOnParsingError**: `boolean`
+
+#### Inherited from
+
+Required.resetToDefaultOnParsingError
+
+#### Defined in
+
+[src/Options.ts:10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L10)
 
 ___
 
@@ -50,7 +65,7 @@ Required.serializer
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Options.ts#L6)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L6)
 
 ___
 
@@ -64,7 +79,7 @@ Required.storageEventUpdatesStore
 
 #### Defined in
 
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Options.ts#L8)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L8)
 
 ___
 
@@ -78,7 +93,7 @@ Required.storageKey
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L5)
 
 ___
 
@@ -92,4 +107,4 @@ Required.storageType
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/Options.ts#L7)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/Options.ts#L7)

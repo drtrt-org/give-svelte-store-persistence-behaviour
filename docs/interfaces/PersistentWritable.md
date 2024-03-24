@@ -34,7 +34,7 @@
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/1425e0d/src/giveSvelteStorePersistenceBehaviour.ts#L12)
+[src/giveSvelteStorePersistenceBehaviour.ts:12](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/7b005b0/src/giveSvelteStorePersistenceBehaviour.ts#L12)
 
 ## Methods
 
