@@ -2,19 +2,24 @@ import type { RuntimeOptions } from "./Options";
 import { StorageType } from "./StorageType";
 
 export interface StorageManager<T> {
-	getFromStorage: () => T | undefined;
+	getFromStorage: () => T | symbol;
 	setToStorage: (value: T) => void;
 }
+
+export const absentStorageEntry: unique symbol = Symbol("absentStorageEntry");
 
 const getStorage = <T>(options: RuntimeOptions<T>) =>
 	options.storageType === StorageType.Local ? window.localStorage : window.sessionStorage;
 
 const makeStorageGetter =
 	<T>(options: RuntimeOptions<T>) =>
-	(): T | undefined => {
+	(): T | symbol => {
 		const stringified = getStorage(options).getItem(options.storageKey);
+		if (stringified === null) {
+			return absentStorageEntry;
+		}
 
-		return stringified === null ? undefined : options.serializer.parse(stringified);
+		return options.serializer.parse(stringified);
 	};
 
 const makeStorageSetter =
