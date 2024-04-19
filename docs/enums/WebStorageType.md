@@ -17,7 +17,7 @@
 
 #### Defined in
 
-[src/WebStorageType.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0d67794/src/WebStorageType.ts#L2)
+[src/WebStorageType.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/WebStorageType.ts#L2)
 
 ___
 
@@ -27,4 +27,4 @@ ___
 
 #### Defined in
 
-[src/WebStorageType.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0d67794/src/WebStorageType.ts#L3)
+[src/WebStorageType.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/WebStorageType.ts#L3)

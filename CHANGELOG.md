@@ -1,3 +1,11 @@
+## [1.0.0-beta.9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-04-19)
+
+
+### Bug Fixes
+
+* introduce a Symbol to represent an absent Browser Storage value ([e45d43f](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/e45d43f8709873d63d366ecefe669b0fab0e8611))
+* playwright tests ([aeb8d6d](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/aeb8d6d2e2ca332e6bcdcf75027fb9171af0b05d))
+
 ## [1.0.0-beta.8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.7...v1.0.0-beta.8) (2024-03-24)
 
 
