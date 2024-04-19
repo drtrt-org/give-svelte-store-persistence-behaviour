@@ -10,10 +10,10 @@ test.describe("Updating Store from Storage Events", () => {
 			await testHarnessPage.instantiateStore(initialStoreValue);
 		});
 
-		test.describe("On a new page, another Store is initialised with `storageEventUpdatesStore` set to false", () => {
+		test.describe("On a new page, another Store is initialised with `webStorageEventUpdatesStore` set to false", () => {
 			test.beforeEach(async ({ testHarnessPage2 }) => {
 				await testHarnessPage2.instantiateStore(undefined, {
-					storageEventUpdatesStore: false,
+					webStorageEventUpdatesStore: false,
 				});
 			});
 
@@ -39,7 +39,7 @@ test.describe("Updating Store from Storage Events", () => {
 
 	const scenarios: [string, OptionsWithoutStorageKey<string> | undefined][] = [
 		["default options", undefined],
-		["`storageEventUpdatesStore` set to true", { storageEventUpdatesStore: true }],
+		["`webStorageEventUpdatesStore` set to true", { webStorageEventUpdatesStore: true }],
 	];
 
 	scenarios.forEach(([scenarioName, options]) => {

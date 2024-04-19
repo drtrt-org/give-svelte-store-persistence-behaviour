@@ -1,10 +1,11 @@
 import { type Updater, type Writable } from "svelte/store";
 
 import { addDefaultsForMissingOptions } from "./addDefaultsForMissingOptions";
-import { getSyncStoreWithBrowserStorage } from "./getSyncStoreWithBrowserStorage";
-import type { RuntimeOptions, Options } from "./Options";
-import { getStorageManager } from "./storageManagement";
+import { getSyncSvelteStoreWithWebStorage } from "./getSyncSvelteStoreWithWebStorage";
+import type { Options } from "./Options";
+import type { RuntimeOptions } from "./RuntimeOptions";
 import { SynchronisingRuntimeOptions } from "./SynchronisingRuntimeOptions";
+import { getWebStorageManager } from "./webStorageManagement";
 
 const browser = typeof window !== "undefined" && typeof document !== "undefined";
 
@@ -18,23 +19,23 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 ): PersistentWritable<T> => {
 	const optionsWithDefaults = addDefaultsForMissingOptions(options);
 
-	const storageManager = getStorageManager(optionsWithDefaults);
+	const webStorageManager = getWebStorageManager(optionsWithDefaults);
 
 	const runtimeOptions = new SynchronisingRuntimeOptions<T>(
 		optionsWithDefaults,
 		store,
-		storageManager,
+		webStorageManager,
 	);
 
 	if (!browser) {
 		return { ...store, runtimeOptions };
 	}
 
-	getSyncStoreWithBrowserStorage(runtimeOptions, store, storageManager)();
+	getSyncSvelteStoreWithWebStorage(runtimeOptions, store, webStorageManager)();
 
 	const handleStorage = (event: StorageEvent) => {
 		if (event.key === runtimeOptions.storageKey) {
-			if (runtimeOptions.storageEventUpdatesStore === true && event.newValue != null) {
+			if (runtimeOptions.webStorageEventUpdatesStore === true && event.newValue != null) {
 				set(runtimeOptions.serializer.parse(event.newValue));
 			}
 		}
@@ -47,14 +48,14 @@ export const giveSvelteStorePersistenceBehaviour = <T>(
 	return {
 		...rest,
 		set(value: T) {
-			storageManager.setToStorage(value);
+			webStorageManager.setToStorage(value);
 			set(value);
 		},
 		update(updater: Updater<T>) {
 			return update((last) => {
 				const value = updater(last);
 
-				storageManager.setToStorage(value);
+				webStorageManager.setToStorage(value);
 
 				return value;
 			});

@@ -1,6 +1,6 @@
 import type { Page, Locator, Expect } from "@playwright/test";
 
-import { StorageType } from "../../../src";
+import { WebStorageType } from "../../../src";
 import { storageKey as defaultStorageKey } from "../testHarness/src/lib/constants";
 import type { OptionsWithoutStorageKey } from "../testHarness/src/lib/OptionsWithoutStorageKey";
 
@@ -89,12 +89,12 @@ export class TestHarnessPage {
 	}
 
 	async assertStorageValue<T>(
-		storageType: StorageType,
+		webStorageType: WebStorageType,
 		expected: T,
 		storageKey: string = defaultStorageKey,
 	): Promise<void> {
 		const storageValueJSON =
-			storageType === StorageType.Local
+			webStorageType === WebStorageType.Local
 				? await this.#getLocalStorageValueJSON(storageKey)
 				: await this.#getSessionStorageValueJSON(storageKey);
 

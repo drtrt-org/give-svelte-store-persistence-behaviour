@@ -3,7 +3,7 @@
 
 	import {
 		giveSvelteStorePersistenceBehaviour,
-		StorageType,
+		WebStorageType,
 		type PersistentWritable,
 	} from "../../../../dist/.";
 
@@ -30,8 +30,6 @@
 
 	function instantiateStore() {
 		const options = JSON.parse(optionsText ?? "{}") as OptionsWithoutStorageKey<string>;
-
-		console.log("GEEBLE", valueToInitialiseStoreWith);
 
 		store = giveSvelteStorePersistenceBehaviour(writable(valueToInitialiseStoreWith), {
 			storageKey,
@@ -80,20 +78,23 @@
 			<input data-testid="storageKey" bind:value={store.runtimeOptions.storageKey} />
 
 			Storage Type:
-			{#each Object.values(StorageType) as storageType}
+			{#each Object.values(WebStorageType) as webStorageType}
 				<label>
 					<input
 						type="radio"
-						bind:group={store.runtimeOptions.storageType}
-						value={storageType}
+						bind:group={store.runtimeOptions.webStorageType}
+						value={webStorageType}
 					/>
-					{storageType}
+					{webStorageType}
 				</label>
 			{/each}
 
 			StorageEvent updates store:
 
-			<input type="checkbox" bind:checked={store.runtimeOptions.storageEventUpdatesStore} />
+			<input
+				type="checkbox"
+				bind:checked={store.runtimeOptions.webStorageEventUpdatesStore}
+			/>
 		{/if}
 	</fieldset>
 

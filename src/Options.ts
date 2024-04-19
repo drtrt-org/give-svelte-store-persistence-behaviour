@@ -1,12 +1,10 @@
 import type { Serializer } from "./Serializer";
-import { StorageType } from "./StorageType";
+import { WebStorageType } from "./WebStorageType";
 
 export interface Options<T> {
 	storageKey: string;
 	serializer?: Serializer<T>;
-	storageType?: StorageType;
-	storageEventUpdatesStore?: boolean;
-	persistLazily?: boolean;
+	webStorageType?: WebStorageType;
+	webStorageEventUpdatesStore?: boolean;
+	initializeWebStorage?: boolean;
 }
-
-export interface RuntimeOptions<T> extends Required<Options<T>> {}

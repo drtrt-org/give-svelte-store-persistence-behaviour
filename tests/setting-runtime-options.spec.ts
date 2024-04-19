@@ -1,4 +1,4 @@
-import { StorageType } from "../src";
+import { WebStorageType } from "../src";
 
 import { storageKey as initialStorageKey } from "./infrastructure/testHarness/src/lib/constants";
 import { test } from "./infrastructure/testHarnessFixture";
@@ -14,7 +14,7 @@ test.describe("Changing StorageKey at runtime", () => {
 		});
 
 		test("Value should be written to Local Storage", async ({ testHarnessPage }) => {
-			await testHarnessPage.assertStorageValue(StorageType.Local, initialStoreValue);
+			await testHarnessPage.assertStorageValue(WebStorageType.Local, initialStoreValue);
 		});
 
 		test("The value should be reflected in a bound span", async ({ testHarnessPage }) => {
@@ -30,7 +30,7 @@ test.describe("Changing StorageKey at runtime", () => {
 				testHarnessPage,
 			}) => {
 				await testHarnessPage.assertStorageValue(
-					StorageType.Local,
+					WebStorageType.Local,
 					initialStoreValue,
 					secondStorageKey,
 				);
@@ -63,7 +63,7 @@ test.describe("Changing StorageKey at runtime", () => {
 					testHarnessPage,
 				}) => {
 					await testHarnessPage.assertStorageValue(
-						StorageType.Local,
+						WebStorageType.Local,
 						initialStoreValue,
 						secondStorageKey,
 					);
