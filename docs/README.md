@@ -6,7 +6,7 @@
 
 ### Enumerations
 
-- [StorageType](enums/StorageType.md)
+- [WebStorageType](enums/WebStorageType.md)
 
 ### Interfaces
 
@@ -44,4 +44,4 @@
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:15](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/giveSvelteStorePersistenceBehaviour.ts#L15)
+[src/giveSvelteStorePersistenceBehaviour.ts:16](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/giveSvelteStorePersistenceBehaviour.ts#L16)

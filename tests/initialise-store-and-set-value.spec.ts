@@ -1,4 +1,4 @@
-import { StorageType } from "../src";
+import { WebStorageType } from "../src";
 
 import type { OptionsWithoutStorageKey } from "./infrastructure/testHarness/src/lib/OptionsWithoutStorageKey";
 import { test } from "./infrastructure/testHarnessFixture";
@@ -6,23 +6,23 @@ import { test } from "./infrastructure/testHarnessFixture";
 const initialStoreValue = "Boo";
 const secondStoreValue = "Hoo";
 
-function assertStorageValue(storageType: StorageType, value: string | undefined) {
-	const otherStorageType =
-		storageType === StorageType.Local ? StorageType.Session : StorageType.Local;
+function assertStorageValue(webStorageType: WebStorageType, value: string | undefined) {
+	const otherWebStorageType =
+		webStorageType === WebStorageType.Local ? WebStorageType.Session : WebStorageType.Local;
 
-	test(`${storageType} Storage should be set to that value`, async ({ testHarnessPage }) => {
-		await testHarnessPage.assertStorageValue(storageType, value);
+	test(`${webStorageType} Storage should be set to that value`, async ({ testHarnessPage }) => {
+		await testHarnessPage.assertStorageValue(webStorageType, value);
 	});
 
-	test(`${otherStorageType} Storage should not be set`, async ({ testHarnessPage }) => {
-		await testHarnessPage.assertStorageValue(otherStorageType, undefined);
+	test(`${otherWebStorageType} Storage should not be set`, async ({ testHarnessPage }) => {
+		await testHarnessPage.assertStorageValue(otherWebStorageType, undefined);
 	});
 }
 
 function assertNoStorageValue() {
-	[StorageType.Local, StorageType.Session].forEach((storageType) => {
-		test(`${storageType} Storage should not be set`, async ({ testHarnessPage }) => {
-			await testHarnessPage.assertStorageValue(storageType, undefined);
+	[WebStorageType.Local, WebStorageType.Session].forEach((webStorageType) => {
+		test(`${webStorageType} Storage should not be set`, async ({ testHarnessPage }) => {
+			await testHarnessPage.assertStorageValue(webStorageType, undefined);
 		});
 	});
 }
@@ -33,23 +33,23 @@ test.describe("Store is initialised with default options", () => {
 			await testHarnessPage.instantiateStore(initialStoreValue);
 		});
 
-		assertStorageValue(StorageType.Local, initialStoreValue);
+		assertStorageValue(WebStorageType.Local, initialStoreValue);
 
 		test.describe("and then setting a new value", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Local, secondStoreValue);
+			assertStorageValue(WebStorageType.Local, secondStoreValue);
 		});
 	});
 });
 
-test.describe("Store is initialised with StorageType of 'Local'", () => {
+test.describe("Store is initialised with WebStorageType of 'Local'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.storageType = StorageType.Local;
+		options.webStorageType = WebStorageType.Local;
 	});
 
 	test.describe("After initialisation with a value", () => {
@@ -57,23 +57,23 @@ test.describe("Store is initialised with StorageType of 'Local'", () => {
 			await testHarnessPage.instantiateStore(initialStoreValue, options);
 		});
 
-		assertStorageValue(StorageType.Local, initialStoreValue);
+		assertStorageValue(WebStorageType.Local, initialStoreValue);
 
 		test.describe("and then setting a new value", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Local, secondStoreValue);
+			assertStorageValue(WebStorageType.Local, secondStoreValue);
 		});
 	});
 });
 
-test.describe("Store is initialised with StorageType of 'Session'", () => {
+test.describe("Store is initialised with WebStorageType of 'Session'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.storageType = StorageType.Session;
+		options.webStorageType = WebStorageType.Session;
 	});
 
 	test.describe("After initialisation with a value", () => {
@@ -81,23 +81,23 @@ test.describe("Store is initialised with StorageType of 'Session'", () => {
 			await testHarnessPage.instantiateStore(initialStoreValue, options);
 		});
 
-		assertStorageValue(StorageType.Session, initialStoreValue);
+		assertStorageValue(WebStorageType.Session, initialStoreValue);
 
 		test.describe("and then setting a new value", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Session, secondStoreValue);
+			assertStorageValue(WebStorageType.Session, secondStoreValue);
 		});
 	});
 });
 
-test.describe("Store is initialised with PersistLazily value of 'false'", () => {
+test.describe("Store is initialised with InitializeWebStorage value of 'false'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.persistLazily = false;
+		options.initializeWebStorage = false;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -105,23 +105,23 @@ test.describe("Store is initialised with PersistLazily value of 'false'", () => 
 	});
 
 	test.describe("After initialisation with a value", () => {
-		assertStorageValue(StorageType.Local, initialStoreValue);
+		assertStorageValue(WebStorageType.Local, initialStoreValue);
 
 		test.describe("and then setting a new value", () => {
 			test.beforeEach(async ({ testHarnessPage }) => {
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Local, secondStoreValue);
+			assertStorageValue(WebStorageType.Local, secondStoreValue);
 		});
 	});
 });
 
-test.describe("Store is initialised with PersistLazily value of 'true'", () => {
+test.describe("Store is initialised with InitializeWebStorage value of 'true'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.persistLazily = true;
+		options.initializeWebStorage = true;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -136,17 +136,17 @@ test.describe("Store is initialised with PersistLazily value of 'true'", () => {
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Local, secondStoreValue);
+			assertStorageValue(WebStorageType.Local, secondStoreValue);
 		});
 	});
 });
 
-test.describe("Store is initialised with StorageType of 'Session' and PersistLazily value of 'true'", () => {
+test.describe("Store is initialised with WebStorageType of 'Session' and InitializeWebStorage value of 'true'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.storageType = StorageType.Session;
-		options.persistLazily = true;
+		options.webStorageType = WebStorageType.Session;
+		options.initializeWebStorage = true;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -161,7 +161,7 @@ test.describe("Store is initialised with StorageType of 'Session' and PersistLaz
 				await testHarnessPage.setStoreValue(secondStoreValue);
 			});
 
-			assertStorageValue(StorageType.Session, secondStoreValue);
+			assertStorageValue(WebStorageType.Session, secondStoreValue);
 		});
 	});
 });

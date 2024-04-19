@@ -18,25 +18,25 @@
 
 ### Properties
 
-- [persistLazily](RuntimeOptions.md#persistlazily)
+- [initializeWebStorage](RuntimeOptions.md#initializewebstorage)
 - [serializer](RuntimeOptions.md#serializer)
-- [storageEventUpdatesStore](RuntimeOptions.md#storageeventupdatesstore)
 - [storageKey](RuntimeOptions.md#storagekey)
-- [storageType](RuntimeOptions.md#storagetype)
+- [webStorageEventUpdatesStore](RuntimeOptions.md#webstorageeventupdatesstore)
+- [webStorageType](RuntimeOptions.md#webstoragetype)
 
 ## Properties
 
-### persistLazily
+### initializeWebStorage
 
-• **persistLazily**: `boolean`
+• **initializeWebStorage**: `boolean`
 
 #### Inherited from
 
-Required.persistLazily
+Required.initializeWebStorage
 
 #### Defined in
 
-[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L9)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L9)
 
 ___
 
@@ -50,21 +50,7 @@ Required.serializer
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L6)
-
-___
-
-### storageEventUpdatesStore
-
-• **storageEventUpdatesStore**: `boolean`
-
-#### Inherited from
-
-Required.storageEventUpdatesStore
-
-#### Defined in
-
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L8)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L6)
 
 ___
 
@@ -78,18 +64,32 @@ Required.storageKey
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L5)
 
 ___
 
-### storageType
+### webStorageEventUpdatesStore
 
-• **storageType**: [`StorageType`](../enums/StorageType.md)
+• **webStorageEventUpdatesStore**: `boolean`
 
 #### Inherited from
 
-Required.storageType
+Required.webStorageEventUpdatesStore
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L7)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L8)
+
+___
+
+### webStorageType
+
+• **webStorageType**: [`WebStorageType`](../enums/WebStorageType.md)
+
+#### Inherited from
+
+Required.webStorageType
+
+#### Defined in
+
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L7)

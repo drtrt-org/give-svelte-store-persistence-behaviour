@@ -1,19 +1,23 @@
 import { type Writable } from "svelte/store";
 
-import { getSyncStoreWithBrowserStorage } from "./getSyncStoreWithBrowserStorage";
-import type { RuntimeOptions } from "./Options";
-import type { StorageManager } from "./storageManagement";
+import { getSyncSvelteStoreWithWebStorage } from "./getSyncSvelteStoreWithWebStorage";
+import type { RuntimeOptions } from "./RuntimeOptions";
+import type { WebStorageManager } from "./webStorageManagement";
 
 export class SynchronisingRuntimeOptions<T> implements RuntimeOptions<T> {
 	private runtimeOptions: RuntimeOptions<T>;
-	private syncStoreWithBrowserStorage: () => void;
+	private syncStoreWithWebStorage: () => void;
 
-	constructor(options: RuntimeOptions<T>, store: Writable<T>, storageManager: StorageManager<T>) {
+	constructor(
+		options: RuntimeOptions<T>,
+		store: Writable<T>,
+		webStorageManager: WebStorageManager<T>,
+	) {
 		this.runtimeOptions = options;
-		this.syncStoreWithBrowserStorage = getSyncStoreWithBrowserStorage(
+		this.syncStoreWithWebStorage = getSyncSvelteStoreWithWebStorage(
 			options,
 			store,
-			storageManager,
+			webStorageManager,
 		);
 	}
 
@@ -24,18 +28,18 @@ export class SynchronisingRuntimeOptions<T> implements RuntimeOptions<T> {
 	set storageKey(value) {
 		if (this.runtimeOptions.storageKey !== value) {
 			this.runtimeOptions.storageKey = value;
-			this.syncStoreWithBrowserStorage();
+			this.syncStoreWithWebStorage();
 		}
 	}
 
-	get storageType() {
-		return this.runtimeOptions.storageType;
+	get webStorageType() {
+		return this.runtimeOptions.webStorageType;
 	}
 
-	set storageType(value) {
-		if (this.runtimeOptions.storageType !== value) {
-			this.runtimeOptions.storageType = value;
-			this.syncStoreWithBrowserStorage();
+	set webStorageType(value) {
+		if (this.runtimeOptions.webStorageType !== value) {
+			this.runtimeOptions.webStorageType = value;
+			this.syncStoreWithWebStorage();
 		}
 	}
 
@@ -46,23 +50,23 @@ export class SynchronisingRuntimeOptions<T> implements RuntimeOptions<T> {
 	set serializer(value) {
 		if (this.runtimeOptions.serializer !== value) {
 			this.runtimeOptions.serializer = value;
-			this.syncStoreWithBrowserStorage();
+			this.syncStoreWithWebStorage();
 		}
 	}
 
-	get storageEventUpdatesStore() {
-		return this.runtimeOptions.storageEventUpdatesStore;
+	get webStorageEventUpdatesStore() {
+		return this.runtimeOptions.webStorageEventUpdatesStore;
 	}
 
-	set storageEventUpdatesStore(value) {
-		this.runtimeOptions.storageEventUpdatesStore = value;
+	set webStorageEventUpdatesStore(value) {
+		this.runtimeOptions.webStorageEventUpdatesStore = value;
 	}
 
-	get persistLazily() {
-		return this.runtimeOptions.persistLazily;
+	get initializeWebStorage() {
+		return this.runtimeOptions.initializeWebStorage;
 	}
 
-	set persistLazily(value) {
-		this.runtimeOptions.persistLazily = value;
+	set initializeWebStorage(value) {
+		this.runtimeOptions.initializeWebStorage = value;
 	}
 }

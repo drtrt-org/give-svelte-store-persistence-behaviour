@@ -2,6 +2,7 @@ export {
 	giveSvelteStorePersistenceBehaviour,
 	type PersistentWritable,
 } from "./giveSvelteStorePersistenceBehaviour";
-export type { Options, RuntimeOptions } from "./Options";
+export type { Options } from "./Options";
+export type { RuntimeOptions } from "./RuntimeOptions";
 export type { Serializer } from "./Serializer";
-export { StorageType } from "./StorageType";
+export { WebStorageType } from "./WebStorageType";

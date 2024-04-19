@@ -12,21 +12,21 @@
 
 ### Properties
 
-- [persistLazily](Options.md#persistlazily)
+- [initializeWebStorage](Options.md#initializewebstorage)
 - [serializer](Options.md#serializer)
-- [storageEventUpdatesStore](Options.md#storageeventupdatesstore)
 - [storageKey](Options.md#storagekey)
-- [storageType](Options.md#storagetype)
+- [webStorageEventUpdatesStore](Options.md#webstorageeventupdatesstore)
+- [webStorageType](Options.md#webstoragetype)
 
 ## Properties
 
-### persistLazily
+### initializeWebStorage
 
-• `Optional` **persistLazily**: `boolean`
+• `Optional` **initializeWebStorage**: `boolean`
 
 #### Defined in
 
-[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L9)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L9)
 
 ___
 
@@ -36,17 +36,7 @@ ___
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L6)
-
-___
-
-### storageEventUpdatesStore
-
-• `Optional` **storageEventUpdatesStore**: `boolean`
-
-#### Defined in
-
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L8)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L6)
 
 ___
 
@@ -56,14 +46,24 @@ ___
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L5)
 
 ___
 
-### storageType
+### webStorageEventUpdatesStore
 
-• `Optional` **storageType**: [`StorageType`](../enums/StorageType.md)
+• `Optional` **webStorageEventUpdatesStore**: `boolean`
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/4aab5dc/src/Options.ts#L7)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L8)
+
+___
+
+### webStorageType
+
+• `Optional` **webStorageType**: [`WebStorageType`](../enums/WebStorageType.md)
+
+#### Defined in
+
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/Options.ts#L7)

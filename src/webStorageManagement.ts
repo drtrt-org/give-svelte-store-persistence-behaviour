@@ -1,7 +1,7 @@
-import type { RuntimeOptions } from "./Options";
-import { StorageType } from "./StorageType";
+import type { RuntimeOptions } from "./RuntimeOptions";
+import { WebStorageType } from "./WebStorageType";
 
-export interface StorageManager<T> {
+export interface WebStorageManager<T> {
 	getFromStorage: () => T | symbol;
 	setToStorage: (value: T) => void;
 }
@@ -9,7 +9,7 @@ export interface StorageManager<T> {
 export const absentStorageEntry: unique symbol = Symbol("absentStorageEntry");
 
 const getStorage = <T>(options: RuntimeOptions<T>) =>
-	options.storageType === StorageType.Local ? window.localStorage : window.sessionStorage;
+	options.webStorageType === WebStorageType.Local ? window.localStorage : window.sessionStorage;
 
 const makeStorageGetter =
 	<T>(options: RuntimeOptions<T>) =>
@@ -28,7 +28,7 @@ const makeStorageSetter =
 		getStorage(options).setItem(options.storageKey, options.serializer.stringify(value));
 	};
 
-export const getStorageManager = <T>(options: RuntimeOptions<T>): StorageManager<T> => ({
+export const getWebStorageManager = <T>(options: RuntimeOptions<T>): WebStorageManager<T> => ({
 	getFromStorage: makeStorageGetter(options),
 	setToStorage: makeStorageSetter(options),
 });

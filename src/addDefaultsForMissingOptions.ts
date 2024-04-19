@@ -1,11 +1,12 @@
-import type { RuntimeOptions, Options } from "./Options";
-import { StorageType } from "./StorageType";
+import type { Options } from "./Options";
+import type { RuntimeOptions } from "./RuntimeOptions";
+import { WebStorageType } from "./WebStorageType";
 
 const defaultOptions = {
 	serializer: JSON,
-	storageType: StorageType.Local,
-	storageEventUpdatesStore: true,
-	persistLazily: false,
+	webStorageType: WebStorageType.Local,
+	webStorageEventUpdatesStore: true,
+	initializeWebStorage: true,
 };
 
 export const addDefaultsForMissingOptions = <T>(options: Options<T>): RuntimeOptions<T> => ({
