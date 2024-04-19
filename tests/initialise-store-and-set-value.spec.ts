@@ -93,11 +93,11 @@ test.describe("Store is initialised with WebStorageType of 'Session'", () => {
 	});
 });
 
-test.describe("Store is initialised with InitializeWebStorage value of 'false'", () => {
+test.describe("Store is initialised with InitializeWebStorage value of 'true'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.initializeWebStorage = false;
+		options.initializeWebStorage = true;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -117,11 +117,11 @@ test.describe("Store is initialised with InitializeWebStorage value of 'false'",
 	});
 });
 
-test.describe("Store is initialised with InitializeWebStorage value of 'true'", () => {
+test.describe("Store is initialised with InitializeWebStorage value of 'false'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
-		options.initializeWebStorage = true;
+		options.initializeWebStorage = false;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
@@ -141,12 +141,12 @@ test.describe("Store is initialised with InitializeWebStorage value of 'true'", 
 	});
 });
 
-test.describe("Store is initialised with WebStorageType of 'Session' and InitializeWebStorage value of 'true'", () => {
+test.describe("Store is initialised with WebStorageType of 'Session' and InitializeWebStorage value of 'false'", () => {
 	const options: OptionsWithoutStorageKey<string> = {};
 
 	test.beforeEach(() => {
 		options.webStorageType = WebStorageType.Session;
-		options.initializeWebStorage = true;
+		options.initializeWebStorage = false;
 	});
 
 	test.beforeEach(async ({ testHarnessPage }) => {
