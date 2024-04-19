@@ -44,4 +44,4 @@
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:16](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/e45d43f/src/giveSvelteStorePersistenceBehaviour.ts#L16)
+[src/giveSvelteStorePersistenceBehaviour.ts:16](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0d67794/src/giveSvelteStorePersistenceBehaviour.ts#L16)
