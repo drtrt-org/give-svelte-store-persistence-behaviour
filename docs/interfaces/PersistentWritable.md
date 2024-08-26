@@ -1,55 +1,44 @@
+[**@drtrt/give-svelte-store-persistence-behaviour**](../README.md) • **Docs**
+
+***
+
 [@drtrt/give-svelte-store-persistence-behaviour](../README.md) / PersistentWritable
 
 # Interface: PersistentWritable\<T\>
 
-## Type parameters
-
-| Name |
-| :------ |
-| `T` |
-
-## Hierarchy
+## Extends
 
 - `Writable`\<`T`\>
 
-  ↳ **`PersistentWritable`**
+## Type Parameters
 
-## Table of contents
-
-### Properties
-
-- [runtimeOptions](PersistentWritable.md#runtimeoptions)
-
-### Methods
-
-- [set](PersistentWritable.md#set)
-- [subscribe](PersistentWritable.md#subscribe)
-- [update](PersistentWritable.md#update)
+• **T**
 
 ## Properties
 
 ### runtimeOptions
 
-• **runtimeOptions**: [`RuntimeOptions`](RuntimeOptions.md)\<`T`\>
+> **runtimeOptions**: `Required`\<[`Options`](Options.md)\<`T`\>\>
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:13](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/giveSvelteStorePersistenceBehaviour.ts#L13)
+[src/giveSvelteStorePersistenceBehaviour.ts:13](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/giveSvelteStorePersistenceBehaviour.ts#L13)
 
 ## Methods
 
-### set
+### set()
 
-▸ **set**(`this`, `value`): `void`
+> **set**(`this`, `value`): `void`
 
 Set value and inform subscribers.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `value` | `T` | to set |
+• **this**: `void`
+
+• **value**: `T`
+
+to set
 
 #### Returns
 
@@ -57,50 +46,31 @@ Set value and inform subscribers.
 
 #### Inherited from
 
-Writable.set
+`Writable.set`
 
 #### Defined in
 
-node_modules/svelte/types/index.d.ts:1628
+node\_modules/svelte/types/index.d.ts:1628
 
-▸ **set**(`this`, `value`): `void`
+***
 
-Set value and inform subscribers.
+### subscribe()
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `value` | `T` | to set |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-Writable.set
-
-#### Defined in
-
-tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1628
-
-___
-
-### subscribe
-
-▸ **subscribe**(`this`, `run`, `invalidate?`): `Unsubscriber`
+> **subscribe**(`this`, `run`, `invalidate`?): `Unsubscriber`
 
 Subscribe on value changes.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `run` | `Subscriber`\<`T`\> | subscription callback |
-| `invalidate?` | `Invalidator`\<`T`\> | cleanup callback |
+• **this**: `void`
+
+• **run**: `Subscriber`\<`T`\>
+
+subscription callback
+
+• **invalidate?**: `Invalidator`\<`T`\>
+
+cleanup callback
 
 #### Returns
 
@@ -108,50 +78,27 @@ Subscribe on value changes.
 
 #### Inherited from
 
-Writable.subscribe
+`Writable.subscribe`
 
 #### Defined in
 
-node_modules/svelte/types/index.d.ts:1619
+node\_modules/svelte/types/index.d.ts:1619
 
-▸ **subscribe**(`this`, `run`, `invalidate?`): `Unsubscriber`
+***
 
-Subscribe on value changes.
+### update()
 
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `run` | `Subscriber`\<`T`\> | subscription callback |
-| `invalidate?` | `Invalidator`\<`T`\> | cleanup callback |
-
-#### Returns
-
-`Unsubscriber`
-
-#### Inherited from
-
-Writable.subscribe
-
-#### Defined in
-
-tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1619
-
-___
-
-### update
-
-▸ **update**(`this`, `updater`): `void`
+> **update**(`this`, `updater`): `void`
 
 Update value using callback and inform subscribers.
 
 #### Parameters
 
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `updater` | `Updater`\<`T`\> | callback |
+• **this**: `void`
+
+• **updater**: `Updater`\<`T`\>
+
+callback
 
 #### Returns
 
@@ -159,31 +106,8 @@ Update value using callback and inform subscribers.
 
 #### Inherited from
 
-Writable.update
+`Writable.update`
 
 #### Defined in
 
-node_modules/svelte/types/index.d.ts:1634
-
-▸ **update**(`this`, `updater`): `void`
-
-Update value using callback and inform subscribers.
-
-#### Parameters
-
-| Name | Type | Description |
-| :------ | :------ | :------ |
-| `this` | `void` | - |
-| `updater` | `Updater`\<`T`\> | callback |
-
-#### Returns
-
-`void`
-
-#### Inherited from
-
-Writable.update
-
-#### Defined in
-
-tests/infrastructure/testHarness/node_modules/svelte/types/index.d.ts:1634
+node\_modules/svelte/types/index.d.ts:1634

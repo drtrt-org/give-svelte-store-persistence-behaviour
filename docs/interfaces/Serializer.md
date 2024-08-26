@@ -1,31 +1,24 @@
+[**@drtrt/give-svelte-store-persistence-behaviour**](../README.md) • **Docs**
+
+***
+
 [@drtrt/give-svelte-store-persistence-behaviour](../README.md) / Serializer
 
 # Interface: Serializer\<T\>
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
-
-## Table of contents
-
-### Methods
-
-- [parse](Serializer.md#parse)
-- [stringify](Serializer.md#stringify)
+• **T**
 
 ## Methods
 
-### parse
+### parse()
 
-▸ **parse**(`text`): `T`
+> **parse**(`text`): `T`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `text` | `string` |
+• **text**: `string`
 
 #### Returns
 
@@ -33,19 +26,17 @@
 
 #### Defined in
 
-[src/Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Serializer.ts#L2)
+[src/Serializer.ts:2](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Serializer.ts#L2)
 
-___
+***
 
-### stringify
+### stringify()
 
-▸ **stringify**(`object`): `string`
+> **stringify**(`object`): `string`
 
 #### Parameters
 
-| Name | Type |
-| :------ | :------ |
-| `object` | `T` |
+• **object**: `T`
 
 #### Returns
 
@@ -53,4 +44,4 @@ ___
 
 #### Defined in
 
-[src/Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Serializer.ts#L3)
+[src/Serializer.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Serializer.ts#L3)

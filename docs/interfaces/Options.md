@@ -1,69 +1,61 @@
+[**@drtrt/give-svelte-store-persistence-behaviour**](../README.md) • **Docs**
+
+***
+
 [@drtrt/give-svelte-store-persistence-behaviour](../README.md) / Options
 
 # Interface: Options\<T\>
 
-## Type parameters
+## Type Parameters
 
-| Name |
-| :------ |
-| `T` |
-
-## Table of contents
-
-### Properties
-
-- [initializeWebStorage](Options.md#initializewebstorage)
-- [serializer](Options.md#serializer)
-- [storageKey](Options.md#storagekey)
-- [webStorageEventUpdatesStore](Options.md#webstorageeventupdatesstore)
-- [webStorageType](Options.md#webstoragetype)
+• **T**
 
 ## Properties
 
-### initializeWebStorage
+### initializeWebStorage?
 
-• `Optional` **initializeWebStorage**: `boolean`
-
-#### Defined in
-
-[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Options.ts#L9)
-
-___
-
-### serializer
-
-• `Optional` **serializer**: [`Serializer`](Serializer.md)\<`T`\>
+> `optional` **initializeWebStorage**: `boolean`
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Options.ts#L6)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Options.ts#L9)
 
-___
+***
+
+### serializer?
+
+> `optional` **serializer**: [`Serializer`](Serializer.md)\<`T`\>
+
+#### Defined in
+
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Options.ts#L6)
+
+***
 
 ### storageKey
 
-• **storageKey**: `string`
+> **storageKey**: `string`
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Options.ts#L5)
 
-___
+***
 
-### webStorageEventUpdatesStore
+### webStorageEventUpdatesStore?
 
-• `Optional` **webStorageEventUpdatesStore**: `boolean`
-
-#### Defined in
-
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Options.ts#L8)
-
-___
-
-### webStorageType
-
-• `Optional` **webStorageType**: [`WebStorageType`](../enums/WebStorageType.md)
+> `optional` **webStorageEventUpdatesStore**: `boolean`
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/0a1357b/src/Options.ts#L7)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Options.ts#L8)
+
+***
+
+### webStorageType?
+
+> `optional` **webStorageType**: [`WebStorageType`](../enumerations/WebStorageType.md)
+
+#### Defined in
+
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/02cb20d55449ceb876b414dc098868930288fd73/src/Options.ts#L7)

@@ -1,3 +1,10 @@
+## [1.0.0-beta.10](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.9...v1.0.0-beta.10) (2024-08-26)
+
+### Features
+
+* remove upper node engine version limit ([b54a881](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/b54a8815f7fe0cadea13552a11ce9dde1c1724c1))
+* upgrade dependencies ([5fd0dd7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/commit/5fd0dd742b3d4e6c8c3e6b0f5247fbb2870bf31d))
+
 ## [1.0.0-beta.9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0-beta.8...v1.0.0-beta.9) (2024-04-19)
 
 
