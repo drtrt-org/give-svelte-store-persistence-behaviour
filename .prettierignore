@@ -1,0 +1,6 @@
+dist/
+docs/
+coverage/
+playwright-report/
+package-lock.json
+CHANGELOG.md

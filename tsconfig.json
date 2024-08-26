@@ -1,0 +1,17 @@
+{
+	"compilerOptions": {
+		"target": "ES2019",
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"strict": true,
+		"esModuleInterop": true,
+		"declaration": true,
+		"outDir": "./dist",
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"verbatimModuleSyntax": true,
+		"allowJs": true
+	},
+	"include": ["./**/*.ts", "./**/*.cjs", "./**/*.js", "./**/*.svelte"],
+	"exclude": ["node_modules", "dist", "coverage", "playwright-report"]
+}

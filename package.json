@@ -1,0 +1,97 @@
+{
+	"name": "@drtrt/give-svelte-store-persistence-behaviour",
+	"version": "1.0.0-beta.11",
+	"description": "A wrapper for any Svelte Store instance that gives it Browser Storage persistence, with a range of configuration options available at instantiation or runtime.",
+	"keywords": [
+		"svelte",
+		"sveltekit",
+		"store",
+		"persist",
+		"storage",
+		"localStorage",
+		"sessionStorage",
+		"wrapper",
+		"behaviour",
+		"behavior",
+		"set",
+		"update",
+		"subscribe",
+		"typescript"
+	],
+	"publishConfig": {
+		"access": "public",
+		"provenance": true
+	},
+	"sideEffects": false,
+	"engines": {
+		"node": ">=18"
+	},
+	"files": [
+		"LICENSE",
+		"README.md",
+		"./dist/"
+	],
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"require": "./dist/index.cjs",
+			"import": "./dist/index.js"
+		}
+	},
+	"scripts": {
+		"prepack": "npm run build",
+		"test": "vitest",
+		"test:watch": "npm test -- --watch",
+		"test:coverage": "vitest run --coverage.enabled --coverage.100",
+		"lint": "prettier --check . && eslint .",
+		"format": "prettier --write . && eslint --fix .",
+		"commitlint": "commitlint --edit",
+		"semantic-release": "semantic-release --dry-run",
+		"build": "tsup src/index.ts --format cjs,esm --dts --clean --sourcemap",
+		"docs": "typedoc",
+		"watch": "npm run build -- --watch src",
+		"test-harness:ci": "npm ci --prefix ./tests/infrastructure/testHarness",
+		"test-harness:start": "npm run start --prefix ./tests/infrastructure/testHarness",
+		"test-harness:dev": "npm run dev --prefix ./tests/infrastructure/testHarness",
+		"playwright": "npx playwright test"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/drtrt-org/give-svelte-store-persistence-behaviour.git"
+	},
+	"author": "drtrt-org",
+	"license": "MIT",
+	"homepage": "https://github.com/drtrt-org/give-svelte-store-persistence-behaviour#readme",
+	"devDependencies": {
+		"@commitlint/cli": "19",
+		"@commitlint/config-conventional": "19",
+		"@playwright/test": "1.46.1",
+		"@semantic-release/changelog": "6",
+		"@semantic-release/exec": "6",
+		"@semantic-release/git": "10",
+		"@semantic-release/github": "10",
+		"@vitest/coverage-v8": "2",
+		"eslint": "9",
+		"eslint-config-prettier": "9",
+		"husky": "9",
+		"prettier": "3",
+		"prettier-plugin-svelte": "3",
+		"semantic-release": "24",
+		"svelte": "4",
+		"tsup": "8",
+		"typedoc": "0",
+		"typedoc-plugin-markdown": "4",
+		"typescript-eslint": "8",
+		"vitest": "2"
+	},
+	"overrides": {
+		"conventional-changelog-conventionalcommits": ">= 8.0.0"
+	},
+	"peerDependencies": {
+		"svelte": "3 || 4"
+	}
+}
