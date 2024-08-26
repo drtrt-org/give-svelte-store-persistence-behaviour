@@ -58,8 +58,13 @@ export class TestHarnessPage {
 	}
 
 	async instantiateStore(initialValue?: string, options?: OptionsWithoutStorageKey<string>) {
-		options !== undefined && (await this.#setOptions(options));
-		initialValue !== undefined && (await this.#setInitialStoreValue(initialValue));
+		if (options !== undefined) {
+			await this.#setOptions(options);
+		}
+
+		if (initialValue !== undefined) {
+			await this.#setInitialStoreValue(initialValue);
+		}
 
 		await this.#clickInstantiateStore();
 	}
