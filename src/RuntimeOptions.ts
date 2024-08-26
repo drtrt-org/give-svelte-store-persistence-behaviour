@@ -1,3 +1,3 @@
 import { type Options } from "./Options";
 
-export interface RuntimeOptions<T> extends Required<Options<T>> {}
+export type RuntimeOptions<T> = Required<Options<T>>;
