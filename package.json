@@ -1,6 +1,6 @@
 {
 	"name": "@drtrt/give-svelte-store-persistence-behaviour",
-	"version": "1.0.0",
+	"version": "1.0.1-beta.1",
 	"description": "A wrapper for any Svelte Store instance that gives it Browser Storage persistence, with a range of configuration options available at instantiation or runtime.",
 	"keywords": [
 		"svelte",
