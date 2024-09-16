@@ -22,7 +22,7 @@
 
 #### Defined in
 
-[src/giveSvelteStorePersistenceBehaviour.ts:13](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/5cf989f39039493745dec08cf5a8ed200c93cd87/src/giveSvelteStorePersistenceBehaviour.ts#L13)
+[src/giveSvelteStorePersistenceBehaviour.ts:13](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/giveSvelteStorePersistenceBehaviour.ts#L13)
 
 ## Methods
 
