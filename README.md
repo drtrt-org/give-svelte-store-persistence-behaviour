@@ -7,8 +7,8 @@
 
 A wrapper for any Svelte Store instance that gives it Browser Storage persistence, with configuration options available at instantiation or runtime.
 
-| _`@drtrt/give-svelte-store-previous-behaviour` is used to persist state in [Fluent Interface Generator](https://www.fluentinterfacegenerator.com)_ |
-| :------------------------------------------------------------------------------------------------------------------------------------------------- |
+| _`@drtrt/give-svelte-store-previous-behaviour` is used to persist state in [Fluent API Generator](https://www.fluentapigen.com)_ |
+| :------------------------------------------------------------------------------------------------------------------------------- |
 
 <br/>
 
