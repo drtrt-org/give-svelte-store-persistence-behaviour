@@ -1,3 +1,5 @@
+## [1.0.1](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0...v1.0.1) (2024-09-16)
+
 ## [1.0.1-beta.1](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/compare/v1.0.0...v1.0.1-beta.1) (2024-09-16)
 
 ## 1.0.0 (2024-08-26)

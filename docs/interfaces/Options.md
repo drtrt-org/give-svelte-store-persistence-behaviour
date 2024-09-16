@@ -18,7 +18,7 @@
 
 #### Defined in
 
-[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/Options.ts#L9)
+[src/Options.ts:9](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/Options.ts#L9)
 
 ***
 
@@ -28,7 +28,7 @@
 
 #### Defined in
 
-[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/Options.ts#L6)
+[src/Options.ts:6](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/Options.ts#L6)
 
 ***
 
@@ -38,7 +38,7 @@
 
 #### Defined in
 
-[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/Options.ts#L5)
+[src/Options.ts:5](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/Options.ts#L5)
 
 ***
 
@@ -48,7 +48,7 @@
 
 #### Defined in
 
-[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/Options.ts#L8)
+[src/Options.ts:8](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/Options.ts#L8)
 
 ***
 
@@ -58,4 +58,4 @@
 
 #### Defined in
 
-[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/Options.ts#L7)
+[src/Options.ts:7](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/Options.ts#L7)

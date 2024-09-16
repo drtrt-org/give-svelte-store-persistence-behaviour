@@ -14,4 +14,4 @@
 
 ## Defined in
 
-[src/RuntimeOptions.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/b436ca4110b544304f1cd2e9bed064c24a3d7d54/src/RuntimeOptions.ts#L3)
+[src/RuntimeOptions.ts:3](https://github.com/drtrt-org/give-svelte-store-persistence-behaviour/blob/a6aacb9208a65278816d78f4fa5c35bfc012b05b/src/RuntimeOptions.ts#L3)
